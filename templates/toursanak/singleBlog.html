@@ -1,0 +1,159 @@
+{% include template_name+'/header.html'%} 
+
+{%for post in posts%}
+  <div class="container" style="margin-top: 10px;">
+    <div class="row">
+      <div class="col s12 m8 l8">
+        <h5 class="titleSingle">{{post.title}}</h5>
+        <div class="decSingle">
+          {{post.description|safe}}
+        </div>
+        <div id="gallery1" ></div>
+
+              <script>
+
+                var img ="{{post.images}}";
+                var images=img.split("$$$$$");
+                // var temp='';
+                for(var i=0;i<images.length;i++){
+                  // alert(i);
+                  if(images[i]!='')
+                    images[i]="/static/images/images/"+images[i];
+                }
+                console.log(images);
+                // images=temp;
+                $(function() {
+
+                    $('#gallery1').imagesGrid({
+                        images: images
+                    });
+                });
+              </script>
+
+              <!-- Social Media -->
+                <section style="background-color: #f7f7f7;padding: 5px; margin-top: 10px;">
+                  <ul id='services'>
+                    <h2 style="color: #222;">Share our Blog</h2>
+                    <li>
+                    <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A//www.toursanak.com/blog/{{post.slug}}">
+                      <div class='entypo-facebook'></div>
+                    </a>
+                      <!-- <span>Facebook</span> -->
+                    </li>
+                    <li>
+                      <a target="_blank" href="https://twitter.com/home?status=http%3A//www.toursanak.com/{{post.slug}}">
+                        <div class='entypo-twitter'></div>
+                      </a>
+                      <!-- <span>Twitter</span> -->
+                    </li>
+                    <li>
+                      <a target="_blank" href="https://plus.google.com/share?url=http%3A//www.toursanak.com/">
+                        <div class='entypo-gplus'></div>
+                      </a>
+<!--                       <span>Google Plus</span> -->
+                    </li>
+                    <li>
+                    <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=http%3A//www.toursanak.com/&title=Toursanak&summary=&source=">
+                      <div class='entypo-linkedin'></div>
+                    </a>
+<!--                       <span>LinkedIn</span> -->
+                    </li>
+                  </ul>
+                </section>
+
+
+      </div>
+
+      <div class="col s12 m4 l4">
+        <h5 class="Related">Related Posts</h5>
+
+        {%for post in review_top%}
+
+        <div class="row" style="margin-bottom: 10px;">
+          <a href="/blog/{{post.slug}}">
+            <div class="col s12 m5 l5">
+              <img src="/static/images/images/{{post.feature_image}}" class="imgRelated">
+            </div>
+            <div class="col s12 m7 l7" style="padding: 0px;">
+              <h6 style="margin: 0px; font-weight: bold; color: #077849;">{{post.title|truncate(30)}}</h6>
+              <div style="font-size: 12px;">{{post.description|striptags|truncate(90)}}</div>
+
+            </div>
+          </a>
+        </div>
+        {%endfor%}
+      </div>
+
+
+    </div>
+
+  </div> <!--end container-->
+{%endfor%}
+
+<style type="text/css">
+@import url(https://fonts.googleapis.com/css?family=Raleway+Dots);
+@import url(https://fonts.googleapis.com/css?family=Advent+Pro:400,200,700);
+@import url(http://weloveiconfonts.com/api/?family=entypo);
+/* entypo */
+[class*="entypo-"]:before {
+  font-family: 'entypo', sans-serif;
+}
+
+section #services {
+  text-align: center;
+  transform: translatez(0);
+}
+section #services h2 {
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0px !important;
+  padding-bottom: 10px;
+}
+section #services li {
+    width: 70px;
+    height: 60px;
+    display: inline-block;
+    margin: 0px;
+    list-style: none;
+}
+section #services li div {
+    width: 55px;
+    height: 55px;
+    color: #077849;
+    font-size: 22px;
+    text-align: center;
+    line-height: 55px;
+    background-color: #fff;
+    transition: all 0.5s ease;
+}
+section #services li div:hover {
+  border-radius: 4px;
+  background-color: #ddd;
+}
+section #services li span {
+  width: 120px;
+  height: 20px;
+  display: block;
+  padding: 15px 0px;
+  color: #fff;
+  font-family: 'Advent Pro', sans-serif;
+  text-transform: uppercase;
+  font-size: 1.2em;
+  text-align: center;
+}
+
+
+</style>
+
+
+<script type="text/javascript">
+  $("p img").addClass("responsive-img");
+  $("p img").css({
+    "margin":"0px",
+    "height":"500"
+  });
+</script>
+{% include template_name+'/footer.html'%} 

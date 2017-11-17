@@ -1,0 +1,42 @@
+{% include template_name+'/header.html'%} 
+
+
+  <!-- Chat with us -->
+  <a class="btn btn-floating chat btn-large cyan"><i class="material-icons">chat</i></a>
+
+  <div class="container" style="margin-top: 10px;">
+    <div class="row">
+      <div class="col s6 m8 l8" style="padding-left: 0px;">
+        <a href="/"><img src="/static/{{template_name}}/img/toursanak_logo.png" class="responsive-img tourLogo">  </a>    
+      </div>
+      <div class="col s6 m4 l4">
+        <div class="backTour">
+          <h6 class="discovery">FAQ</h6>
+        </div>
+      </div>
+    </div>
+
+    <ul class="collapsible" data-collapsible="accordion">
+    {%for post in posts%}
+      <li>
+        <div class="collapsible-header active">{{post.title}}</div>
+        <div class="collapsible-body"><span>{{post.description|safe}}</span></div>
+      </li>
+    {%endfor%}
+    </ul>
+
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $('.collapsible').collapsible();
+      });
+    </script>
+
+
+
+  </div> <!--end container-->
+
+
+
+
+
+{% include template_name+'/footer.html'%} 

@@ -1,0 +1,136 @@
+{% include template_name+'/header.html'%} 
+  <div class="container" style="margin-top: 10px;">
+    <div class="row hide-on-small-only">
+      <div class="col s6 m8 l8">
+        <a href="/"><img src="/static/{{template_name}}/img/toursanak_logo.png" class="responsive-img tourLogo">  </a> 
+      </div>
+      <div class="col s6 m4 l4">
+        <a href="#">
+          <div class="mainGroupbtc">
+            <div class="main-btc">
+              <div class="font-btc">
+                <i class="fa fa-btc" aria-hidden="true"></i>
+                <center><span class="BITCOIN">BITCOIN</span>
+                <br><span class="ACCEPTED">ACCEPTED HERE</span>
+                </center>
+              </div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="row" style="margin-bottom: 0px;">
+      <div class="col s12 m6 l6">
+        <div class="row" style="margin-bottom: 0px;">
+          <div class="col s6 m6 l6">
+            <h6 class="Promotion">BEST OFFERS</h6>
+          </div>
+        </div>
+      </div>
+      <div class="col s12 m6 l6"></div>
+    </div>
+
+    <div class="Green">
+      <div class="row" >
+      {%for post in postsPromotion%}
+        <div class="col s12 m4 l4" style="margin-bottom:10px;">
+          <a href="{{post.slug}}" class="linkColor">
+            <img src="/static/images/images/{{post.feature_image}}" class="responsive-img heightImg">
+            <center>
+              <h6 class="tourName">{{post.title}}</h6>
+            </center>
+              <div class="backDetail">
+                <h6 class="detailsDate">{{post.date}}<span class="right priceIndex">${{post.price}}</span></h6>
+              </div>
+          </a>
+        </div>
+        {%if loop.index % 3 ==0%}
+          <div class="row" style="margin: 0px;"></div>
+        {%endif%}
+      {%endfor%}
+
+        <div class="col s12 m12 l12">
+          <center>
+            <a href="/category/promotion" class="btn loadMore1"> Load More</a>
+          </center>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="Yellow">
+      <div class="row" >
+      {%for post in postsUpcoming%}
+        <div class="col s12 m4 l4" style="margin-bottom:10px;">
+          <a href="{{post.slug}}" class="linkColor">
+            <img src="/static/images/images/{{post.feature_image}}" class="responsive-img heightImg">
+            <center>
+              <h6 class="tourName">{{post.title}}</h6>
+            </center>
+              <div class="backDetailY">
+                <h6 class="detailsDateY">{{post.date}}<span class="right priceIndex">${{post.price}}</span></h6>
+              </div>
+          </a>
+        </div>
+        {%if loop.index % 3 ==0%}
+          <div class="row" style="margin: 0px;"></div>
+        {%endif%}
+      {%endfor%}
+        
+
+        <div class="col s12 m12 l12">
+          <center>
+            <a href="/category/upcoming-tour" class="btn loadMore2"> Load More</a>
+          </center>
+        </div>
+
+      </div>
+    </div> -->
+
+    <div class="row">
+      <h5 class="popTours">Popular Tours</h5>
+      <hr class="Hrpop">
+
+      <div class="owl-carousel owl-theme">
+      {%for post in review_top%}
+        <a href="{{post.slug}}" class="linkColor owl-lazy">
+          <img src="/static/images/images/{{post.feature_image}}" class="responsive-img heightImgTop">
+          <center>
+            <h6 class="tourName">{{post.title}}</h6>
+          </center>
+        </a>
+      {%endfor%}
+      </div>
+
+    </div>
+
+  </div> <!--end container-->
+
+{% include template_name+'/footer.html'%} 
+<script type="text/javascript">
+  $('.owl-carousel').owlCarousel({
+    items:4,
+    lazyLoad:true,
+    loop:true,
+    margin:10,
+    autoplay:true,
+    autoplayTimeout:2000,
+    responsiveClass:true,
+    responsive:{
+        0:{
+            items:1,
+            nav:false,
+        },
+        600:{
+            items:3,
+            nav:false
+        },
+        1000:{
+            items:4,
+            nav:false,
+            loop:true,
+        }
+    }
+});
+
+</script>

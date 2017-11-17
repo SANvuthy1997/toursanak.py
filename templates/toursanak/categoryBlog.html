@@ -1,0 +1,93 @@
+{% include template_name+'/header.html' %} 
+
+
+<style type="text/css">
+  .readMore:hover{
+    color: #077849;
+  }
+</style>
+
+<div class="container" style="padding: 30px;">
+  <div class="row">
+
+  {%for post in posts%}
+    <div class="col s12 m4 l4">
+      <a href="/blog/{{post.slug}}" class="readMore"​>
+      <img src="/static/images/images/{{post.feature_image}}" class="responsive-img heightImg">
+      <h6 class="thisTitle"><b>{{post.title}}</b></h6>
+      {{post.description|striptags|truncate(150)}}
+      <br>
+      </a>
+    </div>
+    {% if loop.index%3 ==0 %}
+      <div class="row"></div>
+    {%endif%}
+  {%endfor%}
+
+  </div>
+
+  <div class="row">
+   <ul class="pagination center">
+      {% if pagin > 1 %}
+                {% if pagin < 8 %}
+                  {% for page in range(1,pagin+1) %}
+                    {% if page == current_pagin %}
+                      <li class="active">
+                        <a href="/category/{{category_slug}}/{{page}}">
+                          {{page}}
+                        </a>
+                      </li>
+                    {%else%}
+                      <li class="waves-effect">
+                        <a href="/category/{{category_slug}}/{{page}}">
+                          {{page}}
+                        </a>
+                      </li>
+                    {%endif%}
+                  {%endfor%}
+                </ul>
+              {%else %}
+                <li class="{%if current_pagin==1 %}active{%endif%}">
+                  <a href="/category/{{category_slug}}/1">1</a>
+                </li>
+                <li class="{%if current_pagin==2 %}active{%endif%}">
+                  <a href="/category/{{category_slug}}/2">2</a>
+                </li>
+                <li class="{%if current_pagin==3 %}active{%endif%}">
+                  <a href="/category/{{category_slug}}/3">3</a>
+                </li>
+                <li class="{%if current_pagin==4 %}active{%endif%}">
+                  <a href="/category/{{category_slug}}/4">4</a>
+                </li>
+                <li class="waves-effect">
+                  <a href="#">...</a>
+                </li>
+                {% for page in range(pagin-4,pagin+1) %}
+                  {% if current_pagin == page%}
+                  <li class="active">
+                    <a href="/category/{{category_slug}}/{{page}}">
+                      {{page}}
+                    </a>
+                    </li>
+                 {%else%}
+                  <li class="waves-effect">
+                    <a href="/category/{{category_slug}}/{{page}}">
+                      {{page}}
+                    </a>
+                    </li>
+                 {%endif%}
+                {%endfor%}
+              {%endif%}
+            {%endif%}
+      
+    </ul>
+  </div>
+</div>
+
+
+
+
+
+
+
+ {% include template_name+'/footer.html' %}

@@ -1,0 +1,85 @@
+{% include template_name+'/header.html'%} 
+
+  <div class="container" style="margin-top: 10px;">
+    <div class="row hide-on-small-only">
+      <div class="col s6 m8 l8">
+        <a href="/"><img src="/static/{{template_name}}/img/toursanak_logo.png" class="responsive-img tourLogo">  </a> 
+      </div>
+      <div class="col s6 m4 l4">
+        <div class="backTour">
+          <h6 class="discovery">who we are</h6>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="">
+        <div class="col s12" style="padding: 0px;">
+          <div style="background-color: #f5f5f5; padding:15px 12%; border-radius: 3px;">
+          {% for abouts in about %}
+            {{abouts.description|safe}}
+          {%endfor%}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ourTeam">
+      <h6 class="teamTitle">our team</h6><br>
+      <div class="row imageSmallScreen">
+        {%for mem in members%}
+          <div class="col s12 m3 l3">
+            <a href="#modal{{mem.id}}">
+              <img src="/static/images/images/{{mem.feature_image}}" class="imgAbout">
+              <h6 class="nameAbout">{{mem.name}}</h6>
+              <h6 class="position">{{mem.possition}}</h6>
+            </a>
+          </div>
+
+          {% if loop.index%4 ==0 %}
+            <div class="row"></div>
+          {%endif%}
+
+        <!-- Modal Structure -->
+        <div id="modal{{mem.id}}" class="modal">
+          <div class="modal-content">
+            <h5 style="font-weight: bold; text-transform: uppercase;">{{mem.name}}</h5>
+            <p style="margin: 0px;">Position: <b>{{mem.possition}}</b></p>
+            <p>{{mem.detail|safe}}</p>
+          </div>
+          <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+          </div>
+        </div>
+
+        {%endfor%}
+
+        <!-- {%for mem in members%}
+          <div class="col s12 m3 l3">
+            <a href="#modal{{mem.id}}">
+              <center><img src="/static/images/images/{{mem.feature_image}}" class="responsive-img imgAbout" style="height: 180px; width: 170px; border-radius:50%; background-color: #f5f5f5;padding: 10px; "></center>
+              <h6 class="nameAbout">{{mem.name}}</h6>
+              <h6 class="position">{{mem.possition}}</h6>
+            </a>
+          </div> -->
+
+        <!-- Modal Structure -->
+        <!-- <div id="modal{{mem.id}}" class="modal">
+          <div class="modal-content">
+            <h5 style="font-weight: bold; text-transform: uppercase;">{{mem.name}}</h5>
+            <p style="margin: 0px;">Position: <b>{{mem.possition}}</b></p>
+            <p>{{mem.detail|safe}}</p>
+          </div>
+          <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+          </div>
+        </div>
+
+        {%endfor%} -->
+        
+      </div>
+    </div>
+
+  </div> <!--end container-->
+
+{% include template_name+'/footer.html'%} 

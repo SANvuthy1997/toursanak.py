@@ -1,0 +1,97 @@
+{% include '/admin/header.html' %}   
+  <main class="mdl-layout__content">
+    <div class="page-content">
+      <div class="container1" style="padding: 5px 20px;">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                  <div class="alert" style="width:100%"> 
+                    <center> 
+                      {{ message }}
+                    </center>
+                  </div>
+                {% endfor %}
+            {% endif %}
+          {% endwith %}
+          <div class="row pull-right" style="padding-right: 12%; margin-top: 10px;">
+                       
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <!-- =============Table============ -->
+        <div class="mdl-grid" style="padding: 0px">
+        <div class="mdl-cell mdl-cell--12-col" style="padding: 0px">
+        <center>
+        <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+          <thead>
+            <tr>
+              <th class="mdl-data-table__cell--non-numeric">Name</th>
+              <th class="mdl-data-table__cell--non-numeric">Email</th>
+              <th class="mdl-data-table__cell--non-numeric">Created at</th>
+            </tr>
+          </thead>
+          <tbody>
+          {%for user in users%}
+            <tr>
+              <td class="mdl-data-table__cell--non-numeric">
+                {{user.name}}
+              </td>
+              <td class="mdl-data-table__cell--non-numeric">{{user.email}}</td>
+              <td class="mdl-data-table__cell--non-numeric show_date_{{user.id}}">Unknow</td>
+              
+            </tr>
+
+            <script type="text/javascript">
+                    
+                $('.show_date_{{user.id}}').html(moment.utc("{{user.created_at}}", "YYYY-MM-DD hh:mm:ss").fromNow());
+              </script>
+            {%endfor%}
+
+          </tbody>
+        </table>
+        </center>
+        <div class="container1">
+          <!-- The Modal -->
+          <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+              <div class="modal-header">
+                <span class="close">&times;</span>
+                <h6 class="create">Create New User</h6>
+              </div>
+              <div class="modal-body">
+                <form action="#">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield1">
+                    <input class="mdl-textfield__input" type="text" id="sample3">
+                    <label class="mdl-textfield__label" for="sample3">Username</label>
+                  </div>
+
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield1">
+                    <input class="mdl-textfield__input" type="email" id="sample3">
+                    <label class="mdl-textfield__label" for="sample3">Email</label>
+                  </div>
+
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield1">
+                    <input class="mdl-textfield__input" type="password" id="sample3">
+                    <label class="mdl-textfield__label" for="sample3">Password</label>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <a href=""><h6 class="btn create-footer">create</h6></a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+{% include '/admin/footer.html' %} 

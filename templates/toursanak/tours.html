@@ -1,0 +1,77 @@
+{% include template_name+'/header.html'%} 
+
+
+  <div class="container" style="margin-top: 10px;">
+    <div class="row hide-on-small-only">
+      <div class="col s6 m8 l8">
+        <a href="/"><img src="/static/{{template_name}}/img/toursanak_logo.png" class="responsive-img tourLogo">  </a> 
+      </div>
+      <div class="col s6 m4 l4">
+        <div class="backTour">
+          <h6 class="discovery">DISCOVERY TOURS</h6>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="row" style="margin-bottom: 0px;">
+      <div class="col s12 m6 l6">
+        <div class="row" style="margin-bottom: 0px;">
+          <div class="col s6 m6 l6">
+            <h6 class="Promotion">Price</h6>
+          </div>
+        </div>
+      </div>
+      <div class="col s12 m6 l6"></div>
+    </div> -->
+
+    <div class="Green">
+      <div class="row" >
+
+      {%for post in postsGreen%}
+        <div class="col s12 m4 l4" style="margin-bottom:10px;">
+          <a href="/{{post.slug}}" class="linkColor">
+            <img src="/static/images/images/{{post.feature_image}}" class="responsive-img heightImg">
+            <center>
+              <h6 class="tourName">{{post.title}}</h6>
+            </center>
+              <div class="backDetail">
+                <h6 class="detailsDate">{{post.date}}<span class="right priceIndex">${{post.price}}</span></h6>
+              </div>
+          </a>
+        </div>
+        {% if loop.index%3 ==0 %}
+          <div class="row"></div>
+        {%endif%}
+      {%endfor%}
+
+      
+        
+      </div>
+      
+    </div>
+
+    <div class="Yellow">
+      <div class="row" >
+      {%for post in postsYellow%}
+        <div class="col s12 m4 l4" style="margin-bottom:10px;">
+          <a href="{{post.slug}}" class="linkColor">
+            <img src="/static/images/images/{{post.feature_image}}" class="responsive-img heightImg">
+            <center>
+              <h6 class="tourName">{{post.title}}</h6>
+            </center>
+              <div class="backDetailY">
+                <h6 class="detailsDateY">{{post.startDate}} - {{post.endDate}}<span class="right priceIndex">${{post.price}}</span></h6>
+              </div>
+          </a>
+        </div>
+        {%if loop.index % 3 ==0%}
+          <div class="row" style="margin: 0px;"></div>
+        {%endif%}
+      {%endfor%}
+
+      </div>
+    </div>
+
+  </div> <!--end container-->
+
+{% include template_name+'/footer.html'%} 

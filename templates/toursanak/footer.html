@@ -1,0 +1,163 @@
+<div style="position: fixed; right: -8%; bottom: 34px; display: none;" id="contact">
+  <div class="indexCon">
+    <div class="row">
+      <form class="col s12" action="/mail/send/" method="POST">
+        <center>
+          <h5 class="ContactIndex">Do you have any question? <i class="fa fa-times right" aria-hidden="true"></i></h5>
+          <hr class="ContactHr">
+        </center>
+
+        <div class="row" style="margin: 0px;">
+          <div class="input-field col s6">
+            <div class="inputBack">
+              <input id="first_name" type="text" type="text" class="validate inputText" required="" placeholder="First Name" name="fname">
+            </div>
+          </div>
+
+          <div class="input-field col s6">
+            <div class="inputBack">
+              <input id="last_name" type="text" type="text" class="validate inputText" required="" placeholder="Last Name" name="lname">
+            </div>
+          </div>
+        </div>
+
+        <div class="row" style="margin: 0px">
+          <div class="input-field col s12">
+            <div class="inputBack">
+              <input id="email" type="email" class="validate inputEmail" required="" placeholder="Email" name="email">
+            </div>
+          </div>
+        </div>
+
+        <div class="row" style="margin: 0px;">
+          <div class="input-field col s12">
+            <div class="inputBack">
+              <textarea id="textarea1" class="materialize-textarea inputText" placeholder="Your Message" name="msg"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <center>
+          <button type="submit" class="btn btnSubmit"> Submit</button>
+        </center>
+        <br>
+
+      </form>
+    </div>
+  </div>
+  <i class="fa fa-sort-desc" aria-hidden="true"></i>
+</div>
+
+
+<footer class="page-footer ">
+  <div class="container">
+    <div class="row" style="margin: 0px;">
+      <div class="col l4 s12">
+        <h6 class="white-text ContactFo">Contact Us</h5>
+        <ul>
+          <li><p class="grey-text text-lighten-3" style="margin: 0px">Tel: +855 92 811 667 / +855 70 453 236 </p></li>
+          <li><p class="grey-text text-lighten-3" style="margin: 0px">Email: toursanak@toursanak.com</p></li>
+<!--           <li><a class="grey-text text-lighten-3" href="#!"></a></li>
+          <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li> -->
+        </ul>
+      </div>
+      <div class="col l4 s12">
+        <h5 class="white-text ContactFo">Follow Us</h5>
+        <a class="grey-text fontSize" href="https://www.facebook.com/toursanak">
+          <i class="fa fa-facebook-square" aria-hidden="true"></i>
+        </a>
+        <a class="grey-text fontSize" href="https://www.linkedin.com/in/toursanak-adventure-279492148/">
+          <i class="fa fa-linkedin-square" aria-hidden="true"></i>
+        </a>
+        <a class="grey-text fontSize" href="https://twitter.com/toursanak">
+          <i class="fa fa-twitter-square" aria-hidden="true"></i>
+        </a>
+        <a class="grey-text fontSize" href="https://www.youtube.com/channel/UCTdJK1cJJ80devfUEGwlB5A">
+          <i class="fa fa-youtube-square" aria-hidden="true"></i>
+        </a>
+        <a class="grey-text fontSize" href="https://www.instagram.com/toursanak_adventure/">
+          <i class="fa fa-instagram" aria-hidden="true"></i>
+        </a>
+      </div>
+      <div class="col l4 s12">
+        <h6 class="white-text ContactFo">Subscribe Us</h5>
+
+
+<!-- Begin MailChimp Signup Form -->
+<link href="//cdn-images.mailchimp.com/embedcode/slim-10_7.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+  #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; }
+  /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
+     We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
+</style>
+<div id="mc_embed_signup">
+<form action="//toursanak.us16.list-manage.com/subscribe/post?u=7613b2a131ad39d52d2142ccc&amp;id=7e3837c6f5" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+    <div id="mc_embed_signup_scroll">
+  
+  <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_7613b2a131ad39d52d2142ccc_7e3837c6f5" tabindex="-1" value=""></div>
+    <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+    </div>
+</form>
+</div>
+
+<!--End mc_embed_signup-->
+
+
+
+        
+
+      </div>
+
+    </div>
+  </div>
+</footer>
+
+
+<!-- js files for all amoogli website  -->
+<script type="text/javascript" src="/static/{{template_name}}/js/materialize.min.js"></script>
+<script type="text/javascript" src="/static/{{template_name}}/js/images-grid.js"></script>
+
+<script type="text/javascript" src="/static/{{template_name}}/js/owl.carousel.min.js"></script>
+
+<script type="text/javascript" src="/static/{{template_name}}/js/script.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+  $(".chat").on("click",function(){
+    $("#contact").slideToggle();
+  });
+});
+
+$(document).ready(function(){
+  $(".fa-times").on("click",function(){
+    $("#contact").slideToggle();
+  });
+});
+
+// function checkActive(first_reload){
+//   var active = localStorage.getItem('active');
+//    if(!active){
+//     active='home';
+//     }
+//     active = active.replace(' ','.');
+//     $('.'+active.replace(' ','.')).addClass('active');
+// }
+// checkActive(true);
+// $('.menuTitle, .sub').click(function(){
+//   localStorage.setItem('active',$(this).find('a').attr('class'));
+//   checkActive(false);
+// });
+
+$('.{{active}}').addClass('active');
+
+
+
+
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+{% include template_name+'/header.html'%} 
+<div class="container" style="padding-top: 10px;">
+
+  <div class="row hide-on-small-only">
+    <div class="col s6 m8 l8" style="padding-left: 0px;">
+      <a href="/"><img src="/static/{{template_name}}/img/toursanak_logo.png" class="responsive-img tourLogo">  </a> 
+    </div>
+    <div class="col s6 m4 l4">
+      <div class="backTour">
+        <h6 class="discovery">Contact Us</h6>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col s12 m6 l6">
+      <div class="row" style="margin: 0px;">
+
+      <div style="padding:0px 22px ">
+      
+      {% with messages = get_flashed_messages() %}
+         {% if messages %}
+            {% for message in messages %}
+            <div style="background-color: red; padding: 10px;background-color: rgba(7, 120, 73, 0.87);padding: 10px;border: 2px solid #077849;color: #fff;text-align: center;">
+              {{ message }}
+            </div>
+            {% endfor %}
+         {% endif %}
+      {% endwith %}
+
+      </div>
+
+        <form class="col s12 smallWidth" method="POST" action="/contactUs/send/">
+
+          <h5 class="conForm hide-on-med-and-up">Contact Us</h5>
+          <div class="row" style="margin: 0px;">
+            <div class="input-field col s12 m6 l6 smallInput">
+              <div class="inputBack">
+                <input id="text" type="text" class="validate inputText" name="fname" placeholder="First Name" required="">
+              </div>
+            </div>
+            <div class="input-field col s12 m6 l6 smallInput">
+              <div class="inputBack">
+                <input id="text" type="text" class="validate inputText" name="lname" placeholder="Last Name" required="">
+              </div>
+            </div>
+            <div class="input-field col s12 m12 l12 smallInput">
+              <div class="inputBack">
+                <input id="email" type="email" class="validate inputText" name="email" placeholder="Email" required="">
+              </div>
+            </div>
+          </div>
+          <div class="row" style="margin: 0px;">
+           
+              <div class="row" style="margin:0px; ">
+                <div class="input-field col s12 smallInput">
+                  <div class="inputBack">
+                    <textarea id="textarea1" class="materialize-textarea inputText" name="msg" placeholder="Your Message" required=""></textarea>
+                  </div>
+                </div>
+              </div>
+          
+          </div>
+          <div class="row" style="margin: 0px;">
+              <center><button type="submit" class="waves-effect waves-light btn btnSubmit" >submit</button></center>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="col s12 m6 l6 MarginContect">
+      <h5 class="conForm">Our office</h5>
+      <hr class="hrCon">
+      <i class="material-icons">location_on</i> <span class="topText"> #35, Street 600bis, Toul Kork, Phnom Penh, Cambodia</span>
+      <br>
+      <br>
+      <i class="material-icons">phonelink_ring</i> <span class="topText"> (+855)92 811 667 / (+855)70 453 236</span>
+      <br><br>
+      <i class="material-icons">contact_mail</i> <span class="topText">toursanak@toursanak.com</span>
+    </div>
+  </div>
+</div>
+
+
+<div>
+  <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3908.698912281327!2d104.89050785014074!3d11.573428691743414!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31095176107e45fb%3A0xd4050445961ddaaf!2sSmallWorld+Cambodia!5e0!3m2!1sen!2skh!4v1497243872959" frameborder="0" style="border:0; width: 100%; height: 450px;" allowfullscreen></iframe> -->
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3908.681551594698!2d104.89084251480804!3d11.574671291782845!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x310951763044d723%3A0x1e95acd8258e0792!2sToursanak+Adventure!5e0!3m2!1sen!2s!4v1504165770841" frameborder="0" style="border:0; width: 100%;height: 450px;" allowfullscreen></iframe>
+</div>
+
+{% include template_name+'/footer.html' %} 

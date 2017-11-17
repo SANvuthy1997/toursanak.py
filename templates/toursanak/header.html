@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="/static/toursanak/img/favicon.jpg">
+    <link rel="stylesheet" type="text/css" href="/static/{{template_name}}/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="/static/{{template_name}}/css/images-grid.css">
+
+
+    <!-- css files for all amoogli website -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/base/jquery-ui.css" type="text/css" media="all">
+    <link rel="stylesheet" type="text/css" href="/static/{{template_name}}/css/owl.carousel.min.css">
+    <link rel="stylesheet" type="text/css" href="/static/{{template_name}}/css/style.css">
+
+    {% if page_name == 'home' %}
+        <title>Toursanak | Toursanak best in tour Cambodia</title>
+        <meta name="description" content="TOUR,toursanak,tour,khmer,guide,visit,angkor,siemreab,Cambodia,book tour,visiting,angkor wat,asean tour, best tour in the world ">
+        <meta name="keywords" content="TOUR, Tour Cambodia, Toursanak Tour, Angkor wat, Trevel Asian, Cycling tour, visit Cambodia, Book tour asian, Phnon penh Tour, Family Tour, Cultural tour,toursanak,tour,khmer,guide,visit,angkor,siemreab,Cambodia,book tour,visiting,angkor wat,asean tour, best tour in the world">
+        <meta name="author" content="Amoogli Admin Page">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    {% elif page_name == 'single' %}
+        {%for post in post_object%}
+        <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+        <meta name="description" content="{{post.shortdec}}" />
+        <meta name="keywords" content="{{post.keyword}}" />
+        <title>{{post.title}}</title>
+        <link rel="SHORTCUT ICON" href="#>
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta content="width=device-width,initial-scale=1" name=viewport>
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta content="width=device-width,initial-scale=1" name=viewport>
+        <!-- facebook meta-->
+        <meta property="og:image" content="http://www.toursanak.com/static/images/images/{{post.feature_image}}" />
+        <meta property="og:url" content="{{post.slug}}" />
+        <meta property="og:title" content="{{post.title}}" />
+        <meta property="og:description" content="{{post.description|striptags|truncate(90)}}" />
+        <!-- twitter meta-->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@toursanak">
+        <meta name="twitter:creator" content="@toursanak">
+        <meta name="twitter:title" content="{{post.title}}">
+        <meta name="twitter:description" content="#">
+        <meta name="twitter:image" content="http://www.toursanak.com/static/images/images/{{post.feature_image}}"/>
+        {%endfor%}
+    {% elif page_name == 'category' %}
+        <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+        <meta name="description" content="{{post.shortdec}}" />
+        <meta name="keywords" content="{{post.keyword}}" />
+        <title>Toursanak Category</title>
+
+    {% elif page_name == 'page' %}
+        {%for page in page_object%}
+        <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+        <meta name="description" content="{{page.shortdec}}" />
+        <meta name="keywords" content="{{page.keyword}}" />
+        <title>{{page.title}}</title>
+        {%endfor%}
+    {%elif page_name == "singleBlog"%}
+        {%for post in posts%}
+        <meta http-equiv="content-type" content="text/html;charset=UTF-8">
+        <meta name="description" content="{{post.shortdec}}" />
+        <meta name="keywords" content="{{post.keyword}}" />
+        <title>{{post.title}}</title>
+        <link rel="SHORTCUT ICON" href="#>
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta content="width=device-width,initial-scale=1" name=viewport>
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta content="width=device-width,initial-scale=1" name=viewport>
+        <!-- facebook meta--> 
+        <meta property="og:image" content="http://www.toursanak.com/static/images/images/{{post.feature_image}}" />
+        <meta property="og:url" content="{{post.slug}}" />
+        <meta property="og:title" content="{{post.title}}" />
+        <meta property="og:description" content="{{post.description|striptags|truncate(90)}}" />
+        <!-- twitter meta-->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@toursanak">
+        <meta name="twitter:creator" content="@toursanak">
+        <meta name="twitter:title" content="#">
+        <meta name="twitter:description" content="#">
+        <meta name="twitter:image" content="#">
+        {%endfor%}
+        {%else%}
+        <title>Toursanak | Best Tour in Cambodia</title>
+    {%endif%}
+
+
+<!-- Global Site Tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106467953-1"></script>
+
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments)};
+  gtag('js', new Date());
+
+  gtag('config', 'UA-106467953-1');
+</script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-106467953-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+
+
+</head>
+<body>
+
+<form class="formSearch" action="/search/" method="GET">
+  <div class="input-field right-align" id="inputField">
+    <input id="search" type="search" required name="q">
+    <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+    <i class="material-icons close">close</i>
+  </div>
+</form>
+
+  <nav>
+    <div class="nav-wrapper">
+      <div class="container">
+        <a href="https://www.facebook.com/toursanak" target="_blank"><i class="fa fa-facebook-official icon hide-on-small-only " aria-hidden="true"></i></a>
+        <a href="https://www.youtube.com/channel/UCTdJK1cJJ80devfUEGwlB5A" target="_blank"><i class="fa fa-youtube-play icon hide-on-small-only" aria-hidden="true"></i></a>
+        <a href="/" class="brand-logo hide-on-med-and-up"><img src="img/toursanak_logo.png" class="responsive-img tourLogo"></a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li class="menuTitle"><a href="/" class="home">Home</a></li>
+          <li class="menuTitle"><a href="/about"  class="about-us">About Us</a></li>
+          <li><a class="dropdown-button" data-activates="dropdown1">Tours</a></li>
+          <li class="menuTitle"><a href="/blog"  class="blog">Blog</a></li>
+          <li class="menuTitle"><a href="/contact" class="contact-us">Contact Us</a></li>
+          <li class="menuTitle"><a href="/faq" class='faq'>FAQ</a></li>
+          <!-- <li class="menuTitle"><a href="#">
+            <i class="fa fa-search" aria-hidden="true"></i>
+          </a></li> -->
+        </ul>
+
+        <!-- Phone -->
+        <ul class="side-nav" id="mobile-demo">
+          <li class="menuTitle"><a href="/" class="home">home</a></li>
+          <li class="menuTitle"><a href="/about" class="about-us">About Us</a></li>
+          <li class="menuTitle" id="dropDown_Li" ><a href="#!">Tours</a>
+            <ul id="showUl" style="display: none;">
+              <li class="sub"><a href="/discovery-tours"  class="tour">Discovery Tours</a></li>
+              <li class="sub"><a href="/bicycle-tours"  class="tour">Bicycle Tours</a></li>
+              <li class="sub"><a href="/custom-tours"  class="tour">Custom Tours</a></li>
+            </ul>
+          </li>
+          <li class="menuTitle"><a href="/blog" class="blog">Blog</a></li>
+          <li class="menuTitle"><a href="/contact" class="contact-us">Contact Us</a></li>
+          <li class="menuTitle"><a href="/faq" class="faq">FAQ</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Dropdown Structure -->
+  <ul id='dropdown1' class='dropdown-content '>
+    <li><a href="/discovery-tours">Discovery Tours</a></li>
+    <li><a href="/bicycle-tours">Bicycle Tours</a></li>
+    <li><a href="/custom-tours">Custom Tours</a></li>
+  </ul>
+
+  <!-- Chat with us -->
+  <a class="btn btn-floating chat btn-large cyan" id="chat"><i class="material-icons">chat</i></a>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-105599504-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+<!-- End header -->

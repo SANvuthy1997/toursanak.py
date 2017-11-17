@@ -1,0 +1,7 @@
+Template="toursanak";
+limit="10";
+email="kimsalsan12@gmail.com";
+password="11101999sal";
+https://www.google.com/settings/security/lesssecureapps
+
+

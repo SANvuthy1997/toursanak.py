@@ -1,0 +1,121 @@
+{% include '/admin/header.html' %}   
+  <main class="mdl-layout__content">
+    <div class="page-content">
+      <div class="container1">
+      
+       {%if page is defined%}
+          
+        <!-- Edit -->
+        {%for p in page%}
+          <form class="form-horizontal" action="/admin/page/edit/{{p.slug}}/" method="POST" id="frm" enctype="multipart/form-data">
+          {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                  <div class="alert" style="width:100%"> 
+                    <center> 
+                      {{ message }}
+                    </center>
+                  </div>
+                {% endfor %}
+            {% endif %}
+          {% endwith %}
+
+          <h5 class="titlePost">please feel free to create your page</h5>
+
+          <div class="mdl-grid" style="padding-bottom: 0px; padding-top: 5px;">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="color: #999; font-weight: bold; padding: 0px 5px;">Title: </div>
+            <div class="col-xs-9 col-sm-5 col-md-5 col-lg-5" style="padding: 5px; margin: 0px;">
+              <input type="text" name="title" id="title" class="form-control formChange" value="{{p.title}}">
+            </div>
+          </div>
+
+
+          <div class="mdl-grid" style="padding-bottom: 0px; padding-top: 5px;">
+            <div class="col-xs-9 col-sm-12 col-md-12 col-lg-12" style="padding: 5px; margin: 0px;">
+              <textarea name="description" id="description ckeditor" class="ckeditor">{{p.description|safe}}</textarea>
+          </div>
+          <br>
+          <br>
+          <br>
+
+          <div class="col-xs-12 col-md-12 col-lg-12 col-sm-12">
+            <button type="submit" class="btn btn-default hidden-xs buttonPost" aria-hidden="true" style="border:none;float: right; clear: both;" onclick="return check();"> Submit
+            </button>
+          </div>
+
+        </form>
+        {%endfor%}
+        {%else%}
+         <!-- add -->
+          <form class="form-horizontal" action="/admin/page/add/" method="POST" id="frm" enctype="multipart/form-data">
+          {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                  <div class="alert" style="width:100%"> 
+                    <center> 
+                      {{ message }}
+                    </center>
+                  </div>
+                {% endfor %}
+            {% endif %}
+          {% endwith %}
+
+
+          <h5 class="titlePost">please feel free to create your page</h5>
+
+          <div class="mdl-grid" style="padding-bottom: 0px; padding-top: 5px;">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="color: #999; font-weight: bold; padding: 0px 5px;">Title: </div>
+            <div class="col-xs-9 col-sm-5 col-md-5 col-lg-5" style="padding: 5px; margin: 0px;">
+              <input type="text" name="title" id="title" class="form-control formChange">
+            </div>
+          </div>
+
+
+          <div class="mdl-grid" style="padding-bottom: 0px; padding-top: 5px;">
+            <div class="col-xs-9 col-sm-12 col-md-12 col-lg-12" style="padding: 5px; margin: 0px;">
+              <div class="editable" style="margin: 0px;">
+              </div>
+              <textarea name="description" id="description ckeditor" class="ckeditor"></textarea>
+          </div>
+          <br>
+          <br>
+          <br>
+
+          <div class="col-xs-12 col-md-12 col-lg-12 col-sm-12">
+            <button type="submit" class="btn btn-default hidden-xs buttonPost" aria-hidden="true" style="border:none;float: right; clear: both;" onclick="return check();"> Submit
+            </button>
+          </div>
+
+        </form>
+
+        {%endif%}
+        
+      </div><!--end container1-->
+
+      <div class="container1" style="padding-top: 0px;">
+
+
+        <div class="mdl-grid">
+          <div class="mdl-cell mdl-cell--12-col hidden-sm hidden-md hidden-lg">
+            <!-- Accent-colored raised button with ripple -->
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Share</button>
+        </div>
+      </div>
+      </div><!--end container1-->
+
+    </div>
+  </main>
+</div>
+
+<!-- <script type="text/javascript" src="/static/admin/js/jquery-3.1.0.min.js"></script> -->
+
+{% include '/admin/footer.html' %} 
+<script type="text/javascript">
+  function check(){
+    var data = $('.editable.medium-editor-insert-plugin').html();
+    data=data.split('<div class="medium-insert-buttons"')[0];
+    $('textarea#description').html(data);
+    return true;
+  }
+</script>
+

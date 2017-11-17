@@ -1,0 +1,554 @@
+{% include '/admin/header.html' %}   
+<script type="text/javascript">
+  var img_no=0;
+</script>
+<style type="text/css">
+  .other_image{
+    height:50px;
+    background-color:#79aec8;
+    color:white;
+    font-weight:bold;
+    line-height:50px;
+  }
+  .more{
+    color:#447e9b;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top:10px;
+    cursor: pointer;
+  }
+  .more:hover{
+    color:#036;
+  }
+  .delete{
+    color:red;
+    cursor: pointer;
+    padding-left:10px;
+    font-weight: bold;
+    text-align: right;
+  }
+  .delete:hover{
+    color:#E88;
+
+  }
+  .btnsub {
+    margin-left: 3px;
+  }
+  tr td img{
+    margin-top:10px;
+  }
+  input[type="file"] {
+    display: block;
+    margin-right: 5px;
+  }
+  .upload-file {
+    padding: 0px;
+  }
+  .feature-img ,.img-1 {
+    border-radius: 3px;
+  }
+  .set-title {
+    font-weight: 300;
+    background-color: #79aec8;
+    padding:7px;
+    border-radius: 3px;
+    color:white;
+    margin-bottom: 5px;
+    text-align: center;
+  }
+  .set-title:hover{
+    background-color:#79aec8;
+  }
+  input#feature_image{
+    display:none;
+  }
+</style>
+  <main class="mdl-layout__content">
+    <div class="page-content">
+      <div class="container1">
+      
+       {%if post is defined%}
+          
+        <!-- Edit -->
+        {%for p in post%}
+          
+          <form class="form-horizontal" action="/admin/post/edit/{{p.slug}}/" method="POST" id="frm" enctype="multipart/form-data">
+          {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                  <div class="alert" style="width:100%"> 
+                    <center> 
+                      {{ message }}
+                    </center>
+                  </div>
+                {% endfor %}
+            {% endif %}
+          {% endwith %}
+
+          <h5 class="titlePost">please feel free to update your post</h5>
+
+          <div class="mdl-grid" style="padding-bottom: 0px; padding-top: 5px;">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="color: #999; font-weight: bold; padding: 0px 5px;">Title: </div>
+            <div class="col-xs-9 col-sm-5 col-md-5 col-lg-5" style="padding: 5px; margin: 0px;">
+              <input type="text" name="title" id="title" class="form-control formChange" value="{{p.title}}">
+            </div>
+          </div>
+
+          <div class="mdl-grid link-resource-box" style="padding-bottom: 0px; padding-top: 5px;">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="color: #999; font-weight: bold; padding: 0px 5px;">Duration: </div>
+
+            <div class="col-xs-9 col-sm-5 col-md-5 col-lg-5" style="padding: 5px; margin: 0px;">
+              <input type="text" name="date" id="date" class="form-control formChange"  value="{{p.date}}">
+            </div>
+
+          </div>
+
+          <div class="mdl-grid link-resource-box" style="padding-bottom: 0px; padding-top: 5px;">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="color: #999; font-weight: bold; padding: 0px 5px;">Participants: </div>
+            <div class="col-xs-9 col-sm-5 col-md-5 col-lg-5" style="padding: 5px; margin: 0px;">
+              <input type="text" name="participants" id="participants" class="form-control formChange" value="{{p.participants}}">
+            </div>
+          </div>
+
+          <div class="mdl-grid link-resource-box" style="padding-bottom: 0px; padding-top: 5px;">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="color: #999; font-weight: bold; padding: 0px 5px;">Cost: </div>
+            <div class="col-xs-9 col-sm-5 col-md-5 col-lg-5" style="padding: 5px; margin: 0px;">
+              <input type="text" name="cost" id="cost" class="form-control formChange" value="{{p.cost}}">
+            </div>
+          </div>
+
+          <div class="mdl-grid link-resource-box thePrice" style="padding-bottom: 0px; padding-top: 5px;">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="color: #999; font-weight: bold; padding: 0px 5px;">Price: </div>
+            <div class="col-xs-9 col-sm-5 col-md-5 col-lg-5" style="padding: 5px; margin: 0px;">
+              <input type="number" name="price" id="price" class="form-control formChange" value="{{p.price}}" min="0">
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding: 0px;">
+          <div class="mdl-grid" style="padding-bottom: 0px; padding-top: 5px;">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="color: #999; font-weight: bold; padding: 0px 5px;">Select your category: </div>
+            <div class="col-xs-9 col-sm-5 col-md-5 col-lg-5" style="padding: 5px; margin: 0px;">
+                {{ form.category_id(class_="form-control formChange") }}
+            </div>
+          </div>
+          </div>
+
+          <div class="mdl-grid imgShow" style="padding-bottom: 0px; padding-top: 5px;">
+            <div class="col-xs-9 col-sm-10 col-md-10 col-lg-10 customize-dec">
+              <label style="color: #999;">Update your image</label>
+              <input type="file" name="feature_image" id="feature_image" style="display:none;">
+              <input type="text" value="" name="all_removed_images" style="display:none;" />
+              {% if p.feature_image == '' %}
+                <img src="/static/admin/img/no-img.png" class="img-responsive uploadImg img-feature-image" alt="Image">
+              {%else%}
+                <img src="/static/images/images/{{p.feature_image}}" class="img-responsive uploadImg img-feature-image" alt="Image">
+              {%endif%}
+            </div>
+          </div>
+
+          <div class="mdl-grid" style="padding-bottom: 0px; padding-top: 5px;display:none;">
+            <input type="file" name="other_image[]" style="display:none">
+          </div>
+
+          <article class="col-sm-12 col-md12 col-lg-12 link-resource-box CustomId">
+            <div class="col-md-12 col-xs-12 co-md-12 col-lg-12 other_image">
+              More Images (optional)
+            </div>
+          </article>
+          <article class="col-sm-12 col-md-12 col-lg-12 link-resource-box CustomId">
+            <div  class="upload-file col-xs-12 col-sm-6 col-md-6 ol-lg-6">
+              <table id="imgs">
+                <tr>
+                  <td>
+                    <input class="other_image1" type="file" name="other_image[]" multiple="" >
+                  </td>
+                  <td>
+                    <img src="/static/admin/img/no-img.png" class="img-1 img-responsive" style="max-width:100px;">
+                  </td>
+                  <td>
+                    <input type="text" value="" name="image1" style="display:none;" />
+                  </td>
+                  <td class="delete delete1" onclick="removeImage(1)">
+                    <span class="">
+                       <input type="checkbox"  name="remove1" id="rm1"/>
+                      Remove
+                    </span>
+                  </td>
+                </tr>
+              </table>
+              <div class="more">
+                <i class="fa fa-plus" aria-hidden="true" style="color:blue"></i>
+                <label>
+                      Add another image
+                </label>
+              </div>
+            </div>
+          </article>
+
+
+          <div class="mdl-grid" style="padding-bottom: 0px; padding-top: 5px;">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 textDes" style="color: #999; font-weight: bold; padding: 0px 5px;">Update text: </div>
+            <div class="mdl-grid" style="padding-bottom: 0px; padding-top: 5px;">
+            <div class="col-xs-9 col-sm-12 col-md-12 col-lg-12" style="padding: 5px; margin: 0px;">
+            <textarea name="description" id="description ckeditor" class="ckeditor">{{p.description|safe}}</textarea>
+            </div>
+            </div>
+          </div>
+          </div>
+          <br>
+          <br>
+          <br>
+
+          <div class="col-xs-12 col-md-12 col-lg-12 col-sm-12">
+            <button type="submit" class="btn btn-default hidden-xs buttonPost" aria-hidden="true" style="border:none;float: right; clear: both;" onclick="return check();"> Submit
+            </button>
+          </div>
+
+
+        </form>
+        <script type="text/javascript">
+            loadOldImages('{{p.images}}');
+        </script>
+         <script type="text/javascript">
+            $('select[name="category_id"] option[value="{{p.category_id}}"]').attr('selected','selected');
+            checkChangeCategory("{{p.category_id}}");
+            // alert("{{p.category_id}}");
+          </script>
+        {%endfor%}
+        {%else%}
+         <!-- add -->
+          <form class="form-horizontal" action="/admin/post/add/" method="POST" id="frm" enctype="multipart/form-data">
+          {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                  <div class="alert" style="width:100%"> 
+                    <center> 
+                      {{ message }}
+                    </center>
+                  </div>
+                {% endfor %}
+            {% endif %}
+          {% endwith %}
+
+          <h5 class="titlePost">please feel free to create your post</h5>
+
+          <div class="mdl-grid" style="padding-bottom: 0px; padding-top: 5px;">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="color: #999; font-weight: bold; padding: 0px 5px;">Title: </div>
+            <div class="col-xs-9 col-sm-5 col-md-5 col-lg-5" style="padding: 5px; margin: 0px;">
+              <input type="text" name="title" id="title" class="form-control formChange">
+            </div>
+          </div>
+
+          <div class="mdl-grid link-resource-box" style="padding-bottom: 0px; padding-top: 5px;">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="color: #999; font-weight: bold; padding: 0px 5px;">Duration: </div>
+            <div class="col-xs-9 col-sm-5 col-md-5 col-lg-5" style="padding: 5px; margin: 0px;">
+              <input type="text" name="date" id="date" class="form-control formChange">
+            </div>
+
+          </div>
+
+
+          <div class="mdl-grid link-resource-box" style="padding-bottom: 0px; padding-top: 5px;">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="color: #999; font-weight: bold; padding: 0px 5px;">Participants: </div>
+            <div class="col-xs-9 col-sm-5 col-md-5 col-lg-5" style="padding: 5px; margin: 0px;">
+              <input type="text" name="participants" id="participants" class="form-control formChange ">
+            </div>
+          </div>
+
+          <div class="mdl-grid link-resource-box" style="padding-bottom: 0px; padding-top: 5px;">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="color: #999; font-weight: bold; padding: 0px 5px;">Cost: </div>
+            <div class="col-xs-9 col-sm-5 col-md-5 col-lg-5" style="padding: 5px; margin: 0px;">
+              <input type="text" name="cost" id="cost" class="form-control formChange">
+            </div>
+          </div>
+
+          <div class="mdl-grid link-resource-box thePrice" style="padding-bottom: 0px; padding-top: 5px;">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="color: #999; font-weight: bold; padding: 0px 5px;">Price: </div>
+            <div class="col-xs-9 col-sm-5 col-md-5 col-lg-5" style="padding: 5px; margin: 0px;">
+              <input type="number" name="price" id="price" class="form-control formChange" value="0" min="0">
+            </div>
+          </div>
+
+
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding: 0px;">
+          <div class="mdl-grid" style="padding-bottom: 0px; padding-top: 5px;">
+          <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="color: #999; font-weight: bold; padding: 0px 5px;">Select category: </div>
+            <div class="col-xs-9 col-sm-5 col-md-5 col-lg-5" style="padding: 5px; margin: 0px;">
+                {{ form.category_id(class_="form-control formChange") }}
+            </div>
+          </div>
+          </div>
+
+          <div class="mdl-grid imgShow" style="padding-bottom: 0px; padding-top: 5px;">
+            <div class="col-xs-9 col-sm-10 col-md-10 col-lg-10 customize-dec">
+              <label style="color: #999;">Upload image</label>
+              <input type="file" name="feature_image" id="feature_image" style="display:none;">
+              <img src="/static/admin/img/no-img.png" class="img-responsive uploadImg img-feature-image " style="min-width:120px;">
+            </div>
+          </div>
+
+          <div class="mdl-grid" style="padding-bottom: 0px; padding-top: 5px;display:none;">
+            <input type="file" name="other_image[]" style="display:none">
+          </div>
+
+
+          <article class="col-sm-12 col-md12 col-lg-12 link-resource-box CustomId">
+            <div class="col-md-12 col-xs-12 co-md-12 col-lg-12 other_image">
+              More Images (optional)
+            </div>
+          </article>
+          <article class="col-sm-12 col-md-12 col-lg-12 link-resource-box CustomId">
+            <div  class="upload-file col-xs-12 col-sm-6 col-md-6 ol-lg-6">
+              <table id="imgs">
+                <tr>
+                  <td>
+                    <input class="other_image1" type="file" name="other_image[]" multiple="" >
+                  </td>
+                  <td>
+                    <img src="/static/admin/img/no-img.png" class="img-1 img-responsive" style="max-width:100px;">
+                  </td>
+                  <td>
+                    <input type="text" value="" name="image1" style="display:none;" />
+                  </td>
+                  <td class="delete delete1" onclick="removeImage(1)">
+                    <span class="">
+                       <input type="checkbox"  name="remove1" id="rm1"/>
+                      Remove
+                    </span>
+                  </td>
+                </tr>
+              </table>
+              <div class="more">
+                <i class="fa fa-plus" aria-hidden="true" style="color:blue"></i>
+                <label>Add another image</label>
+              </div>
+            </div>
+          </article>
+
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 textDes" style="padding: 0px;">
+
+          <div class="mdl-grid" style="padding-bottom: 0px; padding-top: 5px;">
+            <div class="col-xs-9 col-sm-12 col-md-12 col-lg-12" style="padding: 5px; margin: 0px;">
+            <textarea name="description" id="description ckeditor" class="ckeditor"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="row">
+          <div class="col-xs-12 col-md-12 col-lg-12">
+            <textarea rows="6" placeholder="Enter your keyword or short description" style="width: 100%; padding: 10px; display: none;" name="shortDec"></textarea>
+          </div>
+        </div> -->
+
+          <div class="col-xs-12 col-md-12 col-lg-12 col-sm-12">
+            <button type="submit" class="btn btn-default hidden-xs buttonPost" aria-hidden="true" style="border:none;float: right; clear: both;" onclick="return check();"> Submit
+            </button>
+          </div>
+
+        </form>
+
+        {%endif%}
+        
+      </div><!--end container1-->
+
+      <div class="container1" style="padding-top: 0px;">
+
+
+        <div class="mdl-grid">
+          <div class="mdl-cell mdl-cell--12-col hidden-sm hidden-md hidden-lg">
+            <!-- Accent-colored raised button with ripple -->
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">Share</button>
+        </div>
+      </div>
+      </div><!--end container1-->
+
+    </div>
+  </main>
+</div>
+
+<!-- <script type="text/javascript" src="/static/admin/js/jquery-3.1.0.min.js"></script> -->
+
+{% include '/admin/footer.html' %} 
+
+<script type="text/javascript">
+//   //feature image
+  $('.img-feature-image').click(function(){
+    $('input[name="feature_image"]').click();
+  });
+
+   function readURL1(input) {
+
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('.img-feature-image').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$('input#feature_image').change(function(){
+    readURL1(this);
+});
+ </script>
+<script type="text/javascript">
+  function check(){
+    var data = $('.editable.medium-editor-insert-plugin').html();
+    data=data.split('<div class="medium-insert-buttons"')[0];
+    $('textarea#description').html(data);
+    return true;
+  }
+
+
+</script>
+
+<script type="text/javascript">
+  CKEDITOR.replace("description", {
+      filebrowserUploadUrl: '/admin/ckupload/',
+      filebrowserImageUploadUrl: '/ckupload/'
+  });
+</script>
+
+<script type="text/javascript">
+
+var temp_html='';
+var image_string='';
+var feature_image="";
+function getAllRemoveImages(){
+    $('input[name="all_removed_images"]').attr('value','');
+    image_string='';
+    if(img_no==0)
+      img_no=1;
+    for(var i=1;i<=img_no;i++){
+      if($('input[name="remove'+i+'"]:checked').length>0){
+        if(image_string!='')
+           image_string=image_string+"$$$$$"+ $('input[name="image'+i+'"]').val();
+        else
+          image_string=$('input[name="image'+i+'"]').val();
+      }
+    }
+    $('input[name="all_removed_images"]').attr('value',image_string);
+  }
+
+
+function loadOldImages(images){
+  var arr_images=images.split('$$$$$');
+  if(arr_images.length>0){
+    for(var i=0;i<arr_images.length;i++){
+      img_no++;
+      if(arr_images[i]!=""){
+        temp_html='<tr><td><input type="file" name="other_image[]" multiple=""  class="other_image'+img_no+'"/></td><td><img src="/static/images/images/'+arr_images[i]+'" class="img-responsive img-'+img_no+'" style="max-width:100px;"></td><td><input type="text" value="'+arr_images[i]+'" style="display:none;" name="image'+img_no+'" /></td><td class="delete delete'+img_no+'" onclick="removeImage('+img_no+')"><input type="checkbox" name="remove'+img_no+'" id="rm'+img_no+'"/>Remove</td></tr>';
+        if(i==0)
+          $("#imgs").html(temp_html);
+        else
+          $("#imgs").append(temp_html);
+      }
+      loadImage(img_no);
+    }
+  }
+   getAllRemoveImages();
+}
+function loadImage(img_nom){
+    if(img_nom==0)
+      img_nom=1;
+    $('.other_image'+img_nom).change(function(){
+        readURL(this,img_nom);
+    });
+  }
+
+  var html='';
+  var all_other_image=[];
+  loadImage(1);
+  $(".more").click(function(){
+    if(img_no==0)
+      img_no=1;
+    img_no++;
+    html='<tr><td><input type="file" name="other_image[]" multiple="" class="other_image'+img_no+'"/></td><td><img src="/static/admin/img/no-img.png" class="img-responsive img-'+img_no+'" style="max-width:100px;"></td><td><input type="text" value="" style="display:none;" name="image'+img_no+'" /></td><td class="delete delete'+img_no+'" onclick="removeImage('+img_no+')"><input type="checkbox" name="remove'+img_no+'" id="rm'+img_no+'"/>Remove</td></tr>'
+    ;
+    $("#imgs").append(html);
+    loadImage(img_no);
+  });
+  function loadImageToTextBox(n,image_string){
+    $('input[name="image'+n+'"]').attr('value',image_string);
+  }
+  function removeImage(number){
+    //remove image by select on check box
+    var check=$('input[name="remove'+number+'"]:checked').length>0;
+    getAllRemoveImages();
+  }
+
+
+  function readURL(input,number) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+          $('.img-'+number).attr('src', e.target.result);
+          loadImageToTextBox(number,e.target.result);
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+    getAllRemoveImages();
+  }
+
+</script>
+
+<script type="text/javascript">
+//upload link resources
+    $('.link-resource-box').addClass('hidebox');
+    $('select#category_id').change(function(){
+        category_id = $(this).val();
+        if($('select#category_id option[value="'+category_id+'"]').html()=="Blog"){
+            $('.link-resource-box').removeClass('showbox');
+            $('.link-resource-box').addClass('hidebox');
+            $('.CustomId').removeClass('hidebox');
+            $('.CustomId').addClass('showbox');
+            $('.imgShow').removeClass('hidebox');
+            $('.textDes').removeClass('hidebox');
+        }
+        else if ($('select#category_id option[value="'+category_id+'"]').html()=="Custom Tours"){
+            $('.link-resource-box').removeClass('hidebox');
+            $('.link-resource-box').addClass('hidebox');
+            $('.imgShow').removeClass('hidebox');
+            $('.textDes').addClass('hidebox');
+        }
+        else if ($('select#category_id option[value="'+category_id+'"]').html()=="FAQ"){
+            $('.link-resource-box').removeClass('hidebox');
+            $('.imgShow').addClass('hidebox');
+            $('.link-resource-box').addClass('hidebox');
+            $('.textDes').removeClass('hidebox');
+        }
+        else if ($('select#category_id option[value="'+category_id+'"]').html()=="Development and Culture Custom Tour"){
+            $('.imgShow').addClass('hidebox');
+            $('.textDes').removeClass('hidebox');
+            $('.CustomId').removeClass('hidebox');
+            $('.CustomId').addClass('showbox');
+            $('.thePrice').removeClass('hidebox');
+            $('.thePrice').addClass('showbox');
+        }
+        else if ($('select#category_id option[value="'+category_id+'"]').html()=="Family Custom Tour"){
+            $('.imgShow').addClass('hidebox');
+            $('.textDes').removeClass('hidebox');
+            $('.CustomId').removeClass('hidebox');
+            $('.CustomId').addClass('showbox');
+            $('.thePrice').removeClass('hidebox');
+            $('.thePrice').addClass('showbox');
+        }
+        else{
+            $('.link-resource-box').removeClass('hidebox');
+            $('.link-resource-box').addClass('showbox');
+            $('.imgShow').removeClass('hidebox');
+            $('.textDes').removeClass('hidebox');
+        }
+    });
+</script>
+
+<style type="text/css">
+  .showbox{
+    display: block;
+  }
+  .hidebox{
+    display: none;
+  }
+</style> 

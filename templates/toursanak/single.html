@@ -1,0 +1,171 @@
+{% include template_name+'/header.html'%} 
+
+  {%for post in post_object%}
+  <div class="container" style="margin-top: 10px;">
+    <div class="row hide-on-small-only">
+      <div class="col s12 m8 l8" style="padding-left: 0px;">
+        <img src="/static/{{template_name}}/img/toursanak_logo.png" class="responsive-img tourLogo">  
+      </div>
+      <div class="col s12 m4 l4">
+        <div class="backTour">
+          <h6 class="discovery">bicycle TOURS</h6>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      
+      <div class="col s12 m8 l8">
+      {% for post in post_object %}
+        <div class="row" style="margin-bottom: 0px;">
+          <h6 class="southern">{{post.title}}</h6>
+        </div>
+        <table style="margin-left: -15px;">
+          <tr>
+            <td>Duration</td>
+            <td>{{post.date}}</td>
+          </tr>
+
+          <tr>
+            <td>Participants</td>
+            <td>{{post.participants}}</td>
+          </tr>
+
+          <tr>
+            <td>Cost</td>
+            <td>{{post.cost}}</td>
+          </tr>
+
+        </table>
+
+        <div class="row">
+          <h6 class="DESCRIPTION">DESCRIPTION</h6>
+          {{post.description|safe}}
+        </div>
+
+        <div class="row">
+          <h6 class="DESCRIPTION">gallery</h6>
+          <br>
+
+          <div id="gallery1" ></div>
+
+          <script>
+
+            var img ="{{post.images}}";
+            var images=img.split("$$$$$");
+            // var temp='';
+            for(var i=0;i<images.length;i++){
+              // alert(i);
+              if(images[i]!='')
+                images[i]="/static/images/images/"+images[i];
+            }
+            console.log(images);
+            // images=temp;
+            $(function() {
+
+                $('#gallery1').imagesGrid({
+                    images: images
+                });
+            });
+          </script>
+
+        </div>
+      {%endfor%}
+
+      </div>
+
+
+      <div class="col s12 m4 l4">
+        
+          <div style="position: relative;">
+          <div style="padding:0px 0px ">
+      
+          {% with messages = get_flashed_messages() %}
+             {% if messages %}
+                {% for message in messages %}
+                <div style="background-color: red; padding: 10px;background-color: rgba(7, 120, 73, 0.87);padding: 10px;border: 2px solid #077849;color: #fff;text-align: center; font-size: 13px;">
+                  {{ message }}
+                </div>
+                {% endfor %}
+             {% endif %}
+          {% endwith %}
+
+          </div>
+
+          <br>
+            <form method="POST" action="/bookTour/{{post.slug}}/send/">
+            <div class="backPost">
+              <div class="row" style="margin: 0px;">
+
+
+                <div class="col s12 m12 l12 ">
+                  <input type="text" name="nameTour" value="{{post.title}}" style="display: none;">
+                </div>
+
+
+                <div class="col s12 m6 l6" style="padding: 0px 5px;">
+                  <div class="dataColor btnPrice">
+                    <input type="text" class="datepicker" placeholder="Start date" name="startDate" id="from" required="">
+                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                  </div>
+                </div>
+
+                <div class="col s12 m6 l6" style="padding: 0px 5px;">
+                  <div class="dataColor btnPrice">
+                    <input type="text" class="datepicker" placeholder="End date" name="endDate" id="to" required="">
+                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                  </div>
+                </div>
+
+                <div class="row" style="margin: 0px -7px;">
+                  <div class="input-field col s12">
+                  <div class="dataColor1 btnPrice">
+                    <input type="number" class="validate inputPerson" placeholder="Number of people" name="person" required="" min="0">
+                    <i class="fa fa-users" aria-hidden="true"></i>
+                  </div>
+                  </div>
+                </div>
+
+                <div class="row" style="margin: 0px -7px;">
+                  <div class="input-field col s12">
+                  <div class="dataColor1 btnPrice">
+                    <input id="email" type="email" class="validate" placeholder="Email" name="email" required="">
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                  </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="row" style="margin: 0px;">
+
+                <h5 class="priceM">${{post.price}}</h5>
+              </div>
+
+              <div class="row">
+                
+                    <center>
+                      <button class="btn bookNow" type="submit">book now</button>
+                    </center>
+              </div>
+
+              <div class="row" style="margin: 0px;">
+                <span class="phoneNumber">+855 92 811 667 / +855 70 453 236</span> <br>
+                <span class="Email">toursanak@toursanak.com</span>
+              </div>
+
+            </div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+
+
+
+  </div> <!--end container-->
+{%endfor%}  
+
+{% include template_name+'/footer.html'%} 
+
+

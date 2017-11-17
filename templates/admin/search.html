@@ -1,0 +1,159 @@
+{% include '/admin/header.html' %}   
+  <main class="mdl-layout__content">
+    <div class="page-content">
+      <div class="container1" style="padding: 5px 20px;">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+          {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                  <div class="alert" style="width:100%"> 
+                    <center> 
+                      {{ message }}
+                    </center>
+                  </div>
+                {% endfor %}
+            {% endif %}
+          {% endwith %}
+          <div class="row pull-right" style="padding-right: 12%; margin-top: 10px;">
+            {%if current_pagin!=1%}
+              <a href="/admin/{{current_pagin-1}}" class="btn"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
+            {%endif%}
+            <div class="btn number">{{current_pagin}} / {{pagin}}</div>
+            {%if current_pagin!=pagin%}
+              <a class="btn" href="/admin/{{current_pagin+1}}"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+            {%endif%}
+            <a href="/admin/post/add">
+              <button class="btn fa-plus1">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+              </button>
+            </a>            
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <!-- =============Table============ -->
+        <div class="mdl-grid" style="padding: 0px">
+        <div class="mdl-cell mdl-cell--12-col" style="padding: 0px">
+        <center>
+        <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+          <thead>
+            <tr>
+              <th class="mdl-data-table__cell--non-numeric">Title</th>
+              <th class="mdl-data-table__cell--non-numeric">Category</th>
+              <th class="mdl-data-table__cell--non-numeric">Views</th>
+              <th class="mdl-data-table__cell--non-numeric">Published</th>
+              <th class="mdl-data-table__cell--non-numeric">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+          {%for p in posts%}
+            <tr>
+              <td class="mdl-data-table__cell--non-numeric">
+                <a href="/{{p.slug}}" target="_blank">{{p.title|truncate(50)}}</a>
+              </td>
+              <td class="mdl-data-table__cell--non-numeric">{{p.category.name}}</td>
+              <td class="mdl-data-table__cell--non-numeric">{{p.views}}</td>
+              <td class="mdl-data-table__cell--non-numeric show_date_{{p.id}}">Unknow</td>
+              <td class="mdl-data-table__cell--non-numeric hovershow">
+                <div class="edit">
+
+                <a href="/admin/post/edit/{{p.slug}}/" class="fa fa-pencil" aria-hidden="true"></a>
+                <!-- Right aligned menu below button -->
+                <button id="demo-menu-lower-right{{p.id}}"
+                        class="mdl-button mdl-js-button mdl-button--icon">
+                  <i class="material-icons">more_vert</i>
+                </button>
+
+                <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+                    for="demo-menu-lower-right{{p.id}}">
+                  <li class="mdl-menu__item">
+                    <a href="/admin/post/delete/{{p.slug}}/">
+                      <i class="fa fa-trash" aria-hidden="true"></i>
+                      Delete
+                    </a>
+                  </li>
+                </ul>
+                </div>
+
+              </td>
+            </tr>
+
+            <script type="text/javascript">
+                    
+                $('.show_date_{{p.id}}').html(moment.utc("{{p.published_at}}", "YYYY-MM-DD hh:mm:ss").fromNow());
+              </script>
+            {%endfor%}
+
+          </tbody>
+        </table>
+        </center>
+        <div class="container1">
+          <!-- The Modal -->
+          <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+              <div class="modal-header">
+                <span class="close">&times;</span>
+                <h6 class="create">Create New User</h6>
+              </div>
+              <div class="modal-body">
+                <form action="#">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield1">
+                    <input class="mdl-textfield__input" type="text" id="sample3">
+                    <label class="mdl-textfield__label" for="sample3">Username</label>
+                  </div>
+
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield1">
+                    <input class="mdl-textfield__input" type="email" id="sample3">
+                    <label class="mdl-textfield__label" for="sample3">Email</label>
+                  </div>
+
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield1">
+                    <input class="mdl-textfield__input" type="password" id="sample3">
+                    <label class="mdl-textfield__label" for="sample3">Password</label>
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <a href=""><h6 class="btn create-footer">create</h6></a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+
+<script type="text/javascript">
+// Get the modal
+var modal = document.getElementById('myModal');
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+// When the user clicks the button, open the modal 
+// btn.onclick = function() {
+//     modal.style.display = "block";
+// }
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+{% include '/admin/footer.html' %} 

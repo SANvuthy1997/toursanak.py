@@ -1,0 +1,141 @@
+{% include '/admin/header.html' %}  
+
+  <main class="mdl-layout__content">
+    <div class="page-content">
+      <div class="container1" style="padding: 5px 20px;">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        	{% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                  <div class="alert" style="width:100%"> 
+                    <center> 
+                      {{ message }}
+                    </center>
+                  </div>
+                {% endfor %}
+            {% endif %}
+          {% endwith %}
+
+          <div class="row pull-right" style="padding-right: 12%; margin-top: 10px;">
+           <!--  <button class="btn"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>
+            <div class="btn number">20/20</div>
+            <button class="btn"><i class="fa fa-chevron-right" aria-hidden="true"></i></button> -->
+            <!-- <button class="btn fa-plus1" id="myBtn">
+              <i class="fa fa-plus" aria-hidden="true"></i>
+            </button> -->
+             <form action="/admin/category/add/" method="POST" id="frm">
+             	 {{ form.hidden_tag() }}
+                <div class="col-xs-9 col-sm-10 col-md-12 col-lg-10">
+                  <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-plus"></i></span>
+                    {{ form.name(class_="form-control") }}
+                   <!--   <input class="form-control" id="name" name="name" type="text" value=""> -->
+                  </div>
+                </div>
+                <div class="col-xs-3 col-sm-2 col-md-2 col-lg-2 text-right">
+
+                  <button style="margin-right:3px;" type="submit" class="btn btn-success" title="Save category">
+                    <span class="hidden-mobile">Save</span>
+                  </button>
+                </form>
+          </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <!-- =============Table============ -->
+        <div class="mdl-grid" style="padding: 0px">
+        <div class="mdl-cell mdl-cell--12-col" style="padding: 0px">
+        <center>
+        <table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+          <thead>
+            <tr>
+              <th class="mdl-data-table__cell--non-numeric">Name</th>
+              <th class="mdl-data-table__cell--non-numeric">Slug</th>
+              <th class="mdl-data-table__cell--non-numeric">Menu</th>
+              <th class="mdl-data-table__cell--non-numeric">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+          {%for category in categories%}
+            <tr>
+              <td class="mdl-data-table__cell--non-numeric">{{category.name}}</td>
+              <td class="mdl-data-table__cell--non-numeric">{{category.slug}}
+              </td>
+              <td class="mdl-data-table__cell--non-numeric">
+              	{%if category.is_menu==1%}
+              		Yes
+              	{%else%}
+              		No
+              	{%endif%}
+              </td>
+              <td class="mdl-data-table__cell--non-numeric hovershow">
+                <div class="edit">
+
+                <a href="/admin/category/edit/{{category.slug}}/" class="fa fa-pencil" aria-hidden="true"></a>
+                <!-- Right aligned menu below button -->
+                <button id="demo-menu-lower-right{{category.id}}"
+                        class="mdl-button mdl-js-button mdl-button--icon">
+                  <i class="material-icons">more_vert</i>
+                </button>
+
+                <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect"
+                    for="demo-menu-lower-right{{category.id}}">
+                  <li class="mdl-menu__item">
+                    <a href="/admin/category/delete/{{category.slug}}/">
+                      <i class="fa fa-trash" aria-hidden="true"></i>
+                      Delete
+                    </a>
+                  </li>
+                </ul>
+                </div>
+
+              </td>
+            </tr>
+             {%endfor%}
+
+          </tbody>
+        </table>
+        </center>
+        <div class="container1">
+          <!-- The Modal -->
+          <div id="myModal" class="modal">
+
+            <!-- Modal content -->
+            <div class="modal-content">
+              <div class="modal-header">
+                <span class="close">&times;</span>
+                <h6 class="create">Add more category</h6>
+              </div>
+              <div class="modal-body">
+                <form action="#">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield1">
+                    <input class="mdl-textfield__input" type="text" id="sample3">
+                    <label class="mdl-textfield__label" for="sample3">Title</label>
+                  </div>
+
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label textfield1">
+                    <input class="mdl-textfield__input" type="text" id="sample3">
+                    <label class="mdl-textfield__label" for="sample3">Description</label>
+                  </div>
+
+                </form>
+              </div>
+              <div class="modal-footer">
+                <a href=""><h6 class="btn create-footer">submite</h6></a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+ {% for c in cat %}
+ <script type="text/javascript">
+   $('input#name').attr('value',"{{c.name|safe}}");  
+   $('#frm').attr('action','/admin/category/edit/{{c.slug}}/');
+ </script>
+{% endfor %}
+{% include '/admin/footer.html' %} 

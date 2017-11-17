@@ -1,0 +1,1040 @@
+body{
+	font-family: Poppins;
+}
+pre{
+	font-family: Poppins;
+}
+nav{
+	background-color: #272228;
+	    line-height: 45px !important;
+}
+.menuTitle{
+	text-transform: uppercase;
+	font-weight: bold;
+	padding-top: 10px;
+}
+.menuTitle .active{
+	color: #fdcc0a;
+	border-bottom: 3px solid #fdcc0a ;
+}
+.ContactFo{
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 20px;
+}
+strong{
+	font-weight: bold;
+}
+/*.imgs-grid .imgs-grid-image .image-wrap img {
+    position: relative;
+    width: 100%;
+    height: 170px !important;
+    margin: 0;
+}*/
+.icon{
+	font-size: 20px !important;
+	padding-right: 3px;
+}
+a>.fa-youtube-play{
+	font-size: 23px !important;
+}
+
+.tourLogo{
+	padding: 10px 0px;
+	width: 45%;
+}
+.fa-search{
+	margin-top: -10px !important;
+}
+.mainGroupbtc{
+	position: relative;
+}
+.main-btc{
+	position: absolute;
+	background-color: #077849;
+	height: 50px;
+	width: 100%;
+	border-radius: 30px 30px 30px 30px;
+	margin-top: 8px;
+}
+.imgRelated{
+	width: 95%;
+    height: 75px;
+}
+.font-btc{
+	position: relative;
+
+}
+.topText{
+	position: relative;
+	top: -6px;
+	left: 10px;
+}
+.fa-btc{
+	padding: 14px 16px;
+	border-radius: 50%;
+	background-color: #fff;
+	font-size: 20px !important;
+	color: #077849;
+	border:1px solid #077849;
+	-ms-transform: rotate(14deg); /* IE 9 */
+    -webkit-transform: rotate(14deg); /* Chrome, Safari, Opera */
+    transform: rotate(14deg);
+}
+.BITCOIN{
+	font-weight: bold;
+	position: absolute;
+	top: 5px;
+	color: #fff;
+}
+.ACCEPTED{
+	font-weight: bold;
+	position: absolute;
+	top: 25px;
+	left: 130px !important;
+	color: #fff;
+}
+.Promotion{
+	background-color: #077849;
+	padding: 10px;
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #fff;
+	cursor: pointer;
+}
+.Upcoming{
+	background-color: #f9cf00;
+	padding: 10px;
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #333;
+	cursor: pointer;
+}
+.tourName{
+	text-transform: uppercase;
+	font-weight: bold;
+	height: 40px;
+	line-height: 20px;
+}
+.linkColor:hover{
+	text-transform: uppercase;
+	font-weight: bold;
+	color: #077849;
+
+	transition: 0.5s;
+}
+.backDetail{
+	background-color: #077849;
+	position: relative;
+	padding: 3px;
+}
+.details{
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #fff;
+}
+.detailsDate{
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #fff;
+	padding-left: 10px;
+    padding-right: 10px;
+}	
+.priceIndex{
+	font-size: 20px;
+}
+.popTours{
+	text-align: center;
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 23px;
+	margin-top: 50px;
+}
+.Hrpop{
+	border:1px solid #333;
+	width: 8%;
+	margin-top: -5px;
+	margin-bottom: 20px;
+}
+.backDetailY{
+	background-color: #f9cf00;
+	position: relative;
+	padding: 3px;
+}
+.detailsY{
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #111;
+}
+.detailsDateY{
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #111;
+	padding-right: 10px;
+	padding-left: 10px;
+}
+a{
+	color: #333;
+}
+.Yellow{
+	display: none;
+}
+nav ul a:hover {
+    color: rgba(249, 207, 0, 0.66);
+    background-color: rgba(0,0,0,0.1);
+    transition: 0.5s;
+}
+
+/*=============Tour page================*/
+.backTour{
+	background-color: #077849;
+	color: #fff;
+	position: relative;
+}
+.discovery{
+	background-color: #077849;
+	padding: 10px;
+	width: 100%;
+	position: absolute;
+	color: #fff;
+	font-size: 25px;
+	border-radius: 30px;
+	text-align: center;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+.tourDays{
+	margin: 0px;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+.TourPrice{
+	font-size: 25px;
+	font-weight: bold;
+	color: #077849;
+	margin-top: 15px;
+	float: right;
+	clear: both;
+}
+.southern{
+	color: #077849;
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 20px;
+}
+.priceDate{
+	font-weight: bold;
+	text-transform: uppercase;
+	padding: 10px;
+}
+.priceDate i{
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #077849;
+	font-size: 20px;
+	padding: 10px;
+}
+
+.backPost{
+	top: 0px;
+	width: 100%;
+	height:100%;
+	justify-content: center;
+    background-position: center; 
+	border: 1px solid #ddd;
+	padding: 30px 5px;
+}
+.dataColor{
+	color: #fff;
+	font-weight: bold;
+	text-transform: uppercase;
+	position: relative;
+}
+
+.dataColor input[type=text]{
+	padding-left: 25px;
+}
+.dataColor i {
+	position: absolute;
+	left: 5px;
+	top: 15px;
+	font-size: 18px;
+}
+.dataColor1{
+	color: #fff;
+	font-weight: bold;
+	text-transform: uppercase;
+	position: relative;
+}
+
+.btnPrice {
+    width: 100% !important;
+    font-weight: bold;
+    background-color: #ffffff;
+    padding: 5px 5px;
+    color: #077849;
+    margin-bottom: 10px;
+    height: 49px;
+    line-height: 37px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+.preText{
+	overflow-y: hidden;
+}
+.person{
+	cursor: pointer;
+}
+.priceM{
+	text-align: center;
+	font-weight: bolder;
+	color: #077849;
+	font-size: 50px;
+	padding-top: 20px;
+}
+.bookNow,.bookNow:hover{
+	font-weight: bold;
+	line-height: 0px;
+	padding: 20px 25px; 
+	background-color:  #077849 !important;
+    color: #fff !important;
+    box-shadow: none;
+}
+ul li .dropdown-button{
+	font-weight: bold;
+	padding-top: 10px;
+	text-transform: uppercase;
+}
+.arrow_drop_down {
+    line-height: 45px !important;
+}
+#dropdown1{
+	width: 15% !important;
+	top: 100% !important;
+	left: 685px !important;
+}
+.dropdown-content li>a{
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #fff !important;
+    background-color: #272228;
+}
+.dropdown-content li>a:hover{
+	font-weight: bold;
+	text-transform: uppercase;
+	color: rgba(249, 207, 0, 0.66) !important;
+	background-color: #272228;
+}
+.phoneNumber,.Email{
+	color: #077849;
+	font-weight: bold;
+	padding-left: 15px;
+}
+.titleTr{
+	padding-right: 20px;
+	font-weight: bold !important;
+}
+td{
+	padding: 7px 5px;
+	font-weight: bold;
+}
+.DESCRIPTION{
+	font-weight: bold;
+	margin-top: 15px;
+	color: #077849;
+	text-transform: uppercase;
+}
+.readMorePrice{
+	text-transform: uppercase;
+	color: #077849;
+	cursor: pointer;
+}
+.aboutBack{
+	padding: 30px 10%;
+	width: 960px;
+	margin: 0px auto;
+	border-radius: 10px;
+}
+.aboutBack>p{
+	font-size: 16px;
+}
+.fontT{
+	font-size: 30px;
+	color: #077849;
+	font-weight: bold;
+}
+.teamTitle{
+	font-weight: bold;
+	font-size: 24px;
+	text-transform: uppercase;
+	text-align: center;
+	margin-top: 50px;
+}
+.nameAbout{
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: 20px;
+	text-align: center;
+}
+.imgAbout{
+	border-radius: 4px;
+	width: 100%; 
+	height: 225px; 
+	border-radius: 0px;
+}
+.position{
+	color: #fff;
+    background-color: #077849;
+    padding: 15px;
+    line-height: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
+    height: 70px;
+}
+.popularBlog{
+	font-weight: bold;
+	font-size: 24px;
+	text-transform: uppercase;
+}
+.seeBlog{
+	font-weight: bold;
+	text-transform: uppercase;
+	padding-right: 30px;
+	color: #000;
+}
+.seeBlog:hover{
+	color: #077849;
+	transition: 0.5s;
+}
+.imgBlog{
+	border-radius: 4px;
+}
+.titleBlog {
+    font-size: 17px;
+    font-weight: bold;
+    margin-bottom: 30px;
+    line-height: 22px;
+    margin-top: 0px;
+}
+.hoverImg:hover{
+	color: #077849;
+	transition: 0.3s;
+}
+.pagination li.active {
+    background-color: #077849;
+}
+.hrStand{
+	width: 50%;
+	float: left;
+	border: 1px solid #077849;
+}
+.chat{
+	position: fixed;
+	bottom: 10px;
+	right: 10px;
+}
+.btn-floating{
+	background-color: #077849 !important;
+	box-shadow: none;
+	box-shadow: 1px 0px 15px 2px rgba(0, 0, 0, 0.32), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+}
+.btn-floating:hover {
+    background-color: #077849 !important;
+    box-shadow: 1px 0px 26px 2px rgba(0, 0, 0, 0.32), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+}
+#search{
+	margin: 0px;
+	margin-top: -15px;
+}
+.close{
+	margin-top: 9px !important;
+}
+.formSearch{
+	display: none;
+}
+
+.TourTitle{
+	color: #077849;
+	font-weight: bolder;
+	text-transform: uppercase;
+	font-size: 30px;
+}
+.submitTour{
+	color: #077849;
+	font-weight: bolder;
+}
+.Islands{
+	font-size: 18px;
+	font-weight: bold;
+	color: #077849;
+}
+.dayTour{
+	font-weight: bold;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+.loadMore{
+	font-weight: bold;
+	cursor: pointer;
+}
+.loadMore:hover{
+	color: #077849;
+	transition: 0.5s;
+}
+input:not([type]), input[type=text]:not(.browser-default), input[type=password]:not(.browser-default),input[type=url]:not(.browser-default), input[type=time]:not(.browser-default), input[type=date]:not(.browser-default), input[type=datetime]:not(.browser-default), input[type=datetime-local]:not(.browser-default), input[type=tel]:not(.browser-default), input[type=number]:not(.browser-default), input[type=search]:not(.browser-default), textarea.materialize-textarea{
+	margin-bottom: 0px;
+	/*border-bottom: 0px !important;*/
+	color: #333 !important;
+	font-weight: normal !important;
+}
+
+.Tourtitle{
+	font-weight: bold;
+	font-size: 16px;
+	color: #077849;
+	text-transform: uppercase;
+}
+#showTour{
+	display: none;
+}
+.inputEmail{
+	padding: 0px 15px !important;
+	margin-top: 3px;
+}
+.inputName{
+	padding: 0px 15px !important;
+	margin-top: -5px;
+}
+.datepicker{
+	height: 2rem !important;
+}
+.input[type=email]:not(.browser-default):focus:not([readonly])+label{
+
+}
+.backInput{
+	background-color: #fff !important;
+	border: 0px solid #ddd !important;
+	padding: 0px 15px !important;
+	margin-left: 6px !important;
+	height: 3rem !important;
+    line-height: 37px !important;
+
+}
+input[type=email]:not(.browser-default){
+	box-shadow: none !important;
+}
+.input-field label:not(.label-icon).active {
+    font-size: 0.8rem;
+    /*-webkit-transform: translateY(-140%);*/
+    transform: translateY(-34%) !important;
+    margin-left: -7px !important;
+}
+input[type=email]:not(.browser-default).validate+label{
+	font-weight: normal;
+	text-transform: none;
+	top: 0px !important;
+	left: 8px !important;	
+}
+input[type=email]:not(.browser-default){
+	height: 2.7rem !important;
+}
+input[type=email]:not(.browser-default).invalid{
+	border-bottom: 2px solid #F44336 !important;
+    margin-top: -1px !important;	
+}
+
+input[type=date]:not(.browser-default){
+	border-bottom: 0px !important;
+}
+input[type=text]:not(.browser-default).validate+label{
+	font-weight: normal !important;
+	border-bottom: 0px !important;
+	box-shadow: none;
+	text-transform: none !important;
+	left: 0px;
+}
+input[type=text]:not(.browser-default):focus:not([readonly]){
+	box-shadow: none !important;
+	text-transform: none !important;
+}
+.submitBtn,.submitBtn:hover{
+	width: 100%;
+	font-weight: bold;
+	line-height: 0px;
+	padding: 15px !important;
+	background-color: #077849;
+}
+.titleSingle{
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #077849;
+}
+[type="checkbox"]+label {
+    position: relative;
+    padding-left: 35px;
+    cursor: pointer;
+    display: inline-block;
+    height: 25px;
+    line-height: 25px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #077849;
+}
+.inputPerson{
+	padding: 0px 26px !important;
+    position: relative;
+    top: -2px;
+    width: 82% !important;
+}
+.datepicker{
+	border-bottom: 0px !important;
+}
+.validate{
+	border-bottom: 0px !important;
+}
+.dataColor1 .inputEmail{
+	padding-left: 20px !important;
+}
+.dataColor1 .inputName{
+	padding-left: 24px !important;
+}
+.dataColor1 input[type=email]{
+	padding-left: 25px;
+	width: 90%;
+}
+.dataColor1 input[type=text]{
+	padding-left: 20px;
+	width: 90%;
+}
+.dataColor1 i{
+	position: absolute;
+	left: 5px;
+	top: 17px;
+	font-size: 18px;
+}
+.fontSize{
+	font-size: 30px !important;
+	color: #fff !important;
+}
+.valid{
+	box-shadow: none !important;
+}
+#showUl li a{
+	padding-left: 60px;
+}
+.side-nav li a {
+	font-weight: bold;
+    color: #fff !important;
+}
+.side-nav li a:hover{
+	color: #077849;
+}
+.side-nav{
+	width: 233px !important;
+	background-color: #333333 !important;
+}
+.footerWoman{
+    color: #fff;
+    font-weight: bolder;
+}
+footer.page-footer {
+    padding-top: 20px;
+    background-color: rgb(51, 51, 51);
+}
+.footerImg{
+	width: 90px;	
+}
+.hrfooter{
+	width: 4%;
+	border: 2px solid #fff;
+}
+.faFooter{
+	padding: 10px;
+	color: #fff;
+	font-size: 25px !important;
+}
+
+.faFooter:hover{
+	color: #fff;
+	transition: 0.5s;
+}
+.rightFooter{
+	color: #fff !important;
+	padding-left: 30px;
+}
+footer.page-footer .footer-copyright a{
+	color: #fff !important;
+}
+.loadMore1{
+	color: #fff;
+    background-color: #077849;
+    text-align: center;
+    box-shadow: none;
+    font-weight: bold;
+    margin-top: 10px;
+}
+.loadMore1:hover{
+	background-color: #077849 !important;
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.11), 0 1px 0px 0 rgba(0, 0, 0, 0), 0 3px 15px -2px rgba(0, 0, 0, 0.29);
+}
+
+.loadMore2{
+	color: #000;
+    background-color: #f9cf00;
+    text-align: center;
+    box-shadow: none;
+    font-weight: bold;
+    margin-top: 10px;
+}
+.loadMore2:hover{
+	background-color: #f9cf00 !important;
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.11), 0 1px 0px 0 rgba(0, 0, 0, 0), 0 3px 15px -2px rgba(0, 0, 0, 0.29);
+}
+
+.btn-floating.btn-large {
+    width: 45px;
+    height: 45px;
+}
+.btn-floating.btn-large i {
+    line-height: 50px;
+    font-size: 23px;
+}
+.inputText{
+	margin-left: 15px !important;
+	width: 90% !important;
+	color: #fff !important;
+}
+.labelText{
+	margin-left: 20px !important;
+	color: #fff !important;
+}
+
+.inputEmail{
+	margin-left: 5px !important;
+	width: 90% !important;
+	color: #fff !important;
+}
+.labelEmail{
+	margin-left: 20px !important;
+	color: #fff !important;
+}
+input[type=email]:not(.browser-default).inputEmail+label {
+    font-weight: normal;
+    text-transform: none;
+    top: 10px !important;
+    left: 5px !important;
+}
+.input-field .labelEmail:not(.label-icon).active {
+    font-size: 0.8rem;
+    /* -webkit-transform: translateY(-140%); */
+    transform: translateY(-34%) !important;
+    margin-left: 21px !important;
+    margin-top: -5px !important;
+}
+
+.input-field .labelText:not(.label-icon).active {
+    margin-left: 25px !important;
+    margin-top: -8px !important;
+}
+.inputBack{
+	background-color: #077849;
+	color: #fff;
+}
+textarea.materialize-textarea{
+	color: #fff !important;
+}
+.ContactIndex{
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #077849;
+	padding-left: 30px;
+}
+.ContactHr{
+	border: 1px solid #077849;
+	width: 15%;
+	margin-top: -10px;
+	color: #077849;
+}
+.heightImg{
+	height: 35vh !important;
+	width: 100% !important;
+}
+.heightImgTop{
+	height: 28vh !important;
+}
+.conForm{
+	font-weight: bold;
+	text-transform: uppercase;
+	color: #077849;
+}
+.btnSubmit,.btnSubmit:hover{
+	background-color: #077849;
+	font-weight: bold;
+	box-shadow: none;
+	margin-top: 15px;
+}
+input::placeholder {
+    color: #a6a6a6 !important;
+}
+.fa-sort-desc{
+	font-size: 40px;
+	color: #ddd;
+	margin-left: 79%;
+}
+.indexCon{
+	background-color: #ddd; 
+	width: 80%; 
+	position: relative; 
+	margin-bottom: -35px;
+	border-radius: 10px;
+	left: 34px;
+}
+.fa-times:hover{
+	color: #555;
+	cursor: pointer;
+}
+.Related{
+	font-weight: bold;
+	text-transform: uppercase;
+	text-align: center;
+	font-size: 20px;
+	margin-bottom: 20px;
+}
+.owl-carousel{
+	position: static !important;
+}
+.containerSmall{
+	padding: 30px;
+}
+
+
+@media only screen and (min-width: 993px){
+
+.container {
+    width: 80%;
+}
+
+}
+
+
+@media screen and (max-width: 1200px) {
+	.ACCEPTED{
+		left: 116px !important;
+	}
+	#dropdown1 {
+	    width: 17% !important;
+	    top: 100% !important;
+	    left: 630px !important;
+	}
+}
+
+@media screen and (max-width: 1100px) {
+	.ACCEPTED{
+		left: 116px !important;
+	}
+	#dropdown1 {
+	    width: 17% !important;
+	    top: 100% !important;
+	    left: 520px !important;
+	}
+	.heightImg{
+		height: 27vh !important;
+		width: 100% !important;
+	}
+	.Islands{
+		font-size: 15px;
+		font-weight: bold;
+		color: #077849;
+	}
+	[type="checkbox"]+label {
+	    position: relative;
+	    padding-left: 28px;
+	    cursor: pointer;
+	    display: inline-block;
+	    height: 25px;
+	    line-height: 25px;
+	    font-size: 16px;
+	    font-weight: bold;
+	    color: #077849;
+	}
+	.TourTitle {
+	    color: #077849;
+	    font-weight: bolder;
+	    text-transform: uppercase;
+	    font-size: 24px;
+	}
+}
+
+@media screen and (max-width: 900px) {
+	.ACCEPTED{
+		left: 100px !important;
+	}
+	#dropdown1 {
+	    width: 19% !important;
+	    top: 100% !important;
+	    left: 483px !important;
+	}
+	.heightImg{
+		height: 27vh !important;
+		width: 100% !important;
+	}
+	[type="checkbox"]+label {
+	    position: relative;
+	    padding-left: 28px;
+	    cursor: pointer;
+	    display: inline-block;
+	    height: 25px;
+	    line-height: 25px;
+	    font-size: 16px;
+	    font-weight: bold;
+	    color: #077849;
+	}
+	.Islands{
+		font-size: 15px;
+		font-weight: bold;
+		color: #077849;
+	}
+	.TourTitle {
+	    color: #077849;
+	    font-weight: bolder;
+	    text-transform: uppercase;
+	    font-size: 24px;
+	}
+}
+
+/*Phone Screen*/
+
+@media screen and (max-width: 767px) {
+     .tourLogo {
+	    padding: 10px 0px;
+	    width: 100%;
+	}
+	[type="checkbox"]+label {
+	    position: relative;
+	    padding-left: 28px;
+	    cursor: pointer;
+	    display: inline-block;
+	    height: 25px;
+	    line-height: 25px;
+	    font-size: 16px;
+	    font-weight: bold;
+	    color: #077849;
+	}
+	.Islands{
+		font-size: 14px;
+		font-weight: bold;
+		color: #077849;
+	}
+	.heightImg , .heightImgTop{
+		height: 35vh !important;
+		width: 100% !important;
+	}
+	.imgAbout {
+	    border-radius: 4px;
+	    width: 70%;
+	    height: 225px;
+	    border-radius: 0px;
+	    margin-left: auto;
+	    margin-right: auto;
+	    text-align: center;
+	    display: table-cell;
+	    vertical-align: middle;
+	}
+	.hrfooter{
+		width: 15%;
+		border: 2px solid #fff;
+	}
+	.aboutBack{
+		padding: 30px 10px;
+		width: 100%;
+		margin: 0px auto;
+		border-radius: 10px;
+	}
+	.position{
+		color: #fff;
+		background-color: #077849;
+		padding: 15px;
+		text-transform: uppercase;
+		font-weight: bold;
+		text-align: center;
+		width: 80%;
+		vertical-align: middle;
+		margin-left: auto;
+	    margin-right: auto;
+	    text-align: center;
+	    /*display: table-cell;*/
+	}
+	.containerSmall{
+		margin-top: 15px;
+		padding: 0px;
+	}
+	.nameAbout{
+		font-size: 18px;
+	}
+	.btnPrice {
+	    width: 100% !important;
+	    font-weight: bold;
+	    background-color: #ffffff;
+	    padding: 5px 5px;
+	    color: #077849;
+	    margin-bottom: 10px;
+	    height: 49px;
+	    line-height: 37px;
+	    text-align: center;
+	    border: 2px solid #ddd;
+	}
+	.titleSingle{
+		font-weight: bold;
+		text-transform: uppercase;
+		color: #077849;
+		font-size: 16px;
+	}
+	.titleBlog{
+		font-size: 15px;
+	}
+	.smallWidth{
+		padding: 0px !important;
+	}
+	.smallInput{
+		padding: 0px !important;
+	}
+
+}
+
+.fa-sort-desc{
+	position: relative;
+	top: -24px;
+}
+.collapsible-header{
+	font-weight: bold;
+	color: #077849;
+}
+
+#mc_embed_signup form {
+    display: block;
+    position: relative;
+    text-align: left;
+    width: 100% !important;
+    padding: 10px 0 10px 3%;
+    background-color: #333333 !important;
+}
+#mc_embed_signup input.email {
+    font-family: "Open Sans","Helvetica Neue",Arial,Helvetica,Verdana,sans-serif;
+    font-size: 15px;
+    display: block;
+    padding: 0 0.4em;
+    margin: 0 4% 10px 0;
+    min-height: 32px;
+    width: 100% !important;
+    min-width: 130px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border: 1px solid #fff !important;
+    border-radius: 3px;
+}
+input[type=email] .email{
+	color: #fff !important;
+}
+
+

@@ -1,0 +1,159 @@
+{% include '/admin/header.html' %} 
+
+  <main class="mdl-layout__content">
+    <div class="page-content">
+
+      <div class="container1">
+        <a href="#"><i class="material-icons btn-save hidden-xs">save</i></a>
+
+        <div class="mdl-grid" style="padding-bottom: 0px; padding-top: 5px;">
+          <div class="col-xs-3 col-sm-2 col-md-2 col-lg-2 title">Template: </div>
+          <div class="col-xs-9 col-sm-10 col-md-10 col-lg-10" style="padding: 5px; margin: 0px;">
+          	<a href="/admin/template">
+          	{{template_name}}
+          	</a>
+          </div>
+        </div>
+       <!--  <div class="mdl-grid" style="padding-bottom: 0px; padding-top: 5px;">
+          <div class="col-xs-3 col-sm-2 col-md-2 col-lg-2 title">header: </div>
+          <div class="col-xs-9 col-sm-10 col-md-10 col-lg-10 customize-dec">Amoogli Website</div>
+        </div> -->
+<!-- 
+        <div class="mdl-grid" style="padding-bottom: 0px; padding-top: 5px;">
+          <div class="col-xs-3 col-sm-2 col-md-2 col-lg-2 title"></div>
+          <div class="col-xs-9 col-sm-10 col-md-10 col-lg-10 customize-dec">
+            <label>Upload your favicon</label>
+            <input type="file" name='favicon'>
+            <img src="/static/{{template_name}}/img/no-img.png" class="img-responsive uploadImg">
+            <input type="file" name="" style="display: none;">
+          </div>
+        </div>
+
+        <div class="mdl-grid" style="padding-bottom: 0px; padding-top: 5px;">
+          <div class="col-xs-3 col-sm-2 col-md-2 col-lg-2 title"></div>
+          <div class="col-xs-9 col-sm-10 col-md-10 col-lg-10 customize-dec">
+            <label>Upload your logo</label>
+            <input type="file" name='logo'>
+            <img src="/static/{{template_name}}/img/no-img.png" class="img-responsive uploadImg">
+            <input type="file" name="" style="display: none;">
+          </div>
+        </div>
+
+        <div class="mdl-grid" style="padding-bottom: 0px; padding-top: 5px;">
+          <div class="col-xs-3 col-sm-2 col-md-2 col-lg-2 title">Keyword: </div>
+          <div class="col-xs-9 col-sm-5 col-md-5 col-lg-5 customize-dec">
+            <div class="form-group">
+              <textarea class="form-control" rows="3" id="comment"></textarea>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      -->
+
+
+      <div class="container1">
+
+        <div class="mdl-grid" style="padding-bottom: 0px; padding-top: 5px;">
+          <div class="col-xs-3 col-sm-2 col-md-2 col-lg-2 title">Menu: </div>
+            <div class="col-xs-9 col-sm-10 col-md-10 col-lg-10" style="padding: 5px; margin: 0px;">
+
+            {%for category in cats%}
+              <div class="row" style="padding: 0px 15px; margin-bottom: 10px;">
+                <div class="col-xs-3 col-sm-1 col-md-1 col-lg-1 switch-3-back">
+                {%if category.is_menu==0%}
+                  <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect  mdl-checkbox" for="switch-{{category.id}}">
+                    <input type="checkbox" id="switch-{{category.id}}" class="mdl-switch__input" value="{{category.id}}">
+                    <span class="mdl-switch__label"></span>
+                  </label>
+                {%else%}
+                	 <label class="mdl-switch mdl-js-switch mdl-js-ripple-effect mdl-checkbox mdl-js-ripple-effect--ignore-events is-upgraded is-checked" for="switch-{{category.id}}">
+                    <input type="checkbox" id="switch-{{category.id}}" class="mdl-switch__input" value="{{category.id}}" checked="checked">
+
+                    
+                {%endif%}
+                </div>
+                <div class="col-xs-9 col-sm-10 col-md-10 col-lg-10 menu-back" style="padding: 5px; margin: 0px;">
+                  <p class="menu-bar">{{category.name}} <a class="fa fa-pencil pull-right fa1" aria-hidden="true" href="admin/category/edit/{{category.slug}}"></a></p>
+                </div>
+              </div>
+              {%endfor%}
+              <div class="mdl-grid pull-right">
+                  <div class="mdl-cell mdl-cell--12-col hidden-sm hidden-md hidden-lg">
+                    <!-- Accent-colored raised button with ripple -->
+                    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">SAVE</button>
+                  </div>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+
+        <hr>
+
+      </div><!--end container1-->
+
+  </main>
+</div>
+<script>
+$(".mdl-checkbox").on("change", function() {
+  if ($(this).hasClass("is-checked")) {
+    $(this).children().first().attr("checked", true);
+	//alert($(this).val());
+	var id=$(this).children().first().val();
+	var category_check=$(this).children().first().is(':checked');
+	if(category_check==true)
+		category_check=1;
+	else
+		category_check=0;
+	//alert(category_check);
+	$.ajax({
+      type: "GET",
+      url: '/admin/menu/'+id+"/"+category_check+"/category",
+      success: function(response) {
+      	//console.log(":"+response);
+      }
+    });
+  } else {
+    $(this).children().first().removeAttr("checked");
+    var id=$(this).children().first().val();
+	var category_check=$(this).children().first().is(':checked');
+	if(category_check==true)
+		category_check=1;
+	else
+		category_check=0;
+	//alert(category_check);
+	$.ajax({
+      type: "GET",
+      url: '/admin/menu/'+id+"/"+category_check+"/category",
+      success: function(response) {
+      	//console.log(":"+response);
+      }
+    });
+  }
+});
+	//save and update data 
+	
+	$("#page input").change(function(){
+		//alert($(this).val());
+		var id=$(this).val();
+		var page_check=$(this).is(':checked');
+		//egory_check=document.getElementById('1').checked;
+		//alert(id+" : "+category_check);
+		if(page_check==true)
+			page_check=1;
+		else
+			page_check=0;
+		//alert(category_check);
+		$.ajax({
+          type: "GET",
+          url: '/admin/menu/'+id+"/"+page_check+"/page",
+          success: function(response) {
+          	//console.log(":"+response);
+          }
+        });
+	});
+</script>
+{% include '/admin/footer.html' %} 
